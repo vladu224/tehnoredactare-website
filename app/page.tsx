@@ -1,5 +1,6 @@
 "use client";
 
+import { Hero } from "@/components/Hero";
 import { useEstimate } from "@/hooks/useEstimate";
 import { EstimateForm } from "@/components/EstimateForm";
 import { PriceBreakdown } from "@/components/PriceBreakdown";
@@ -25,8 +26,10 @@ export default function Home() {
     }
 
     return (
-      <main className="min-h-screen bg-paper px-6 py-12">
-        <div className="max-w-5xl mx-auto">
+      <main className="min-h-screen bg-paper mx-6 px-18 py-12">
+        <Hero />
+
+        <section className="max-w-full mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
             <div>
               <h1 className="font-display text-center md:text-left text-4xl text-ink">
@@ -36,9 +39,7 @@ export default function Home() {
               <div className="w-full h-px bg-accent mt-4 mb-4" />
               
               <p className="text-ink-soft max-w-xl">
-                Estimează rapid costul tehnoredactării unei cărți: introdu
-                numărul de pagini, formatul și particularitățile conținutului.
-                Vezi prețul în timp real.
+                Estimează rapid costul tehnoredactării unei cărți: introdu numărul de pagini, formatul și conținutului. Vezi prețul în timp real.
               </p>
             </div>
 
@@ -59,7 +60,7 @@ export default function Home() {
               <PriceBreakdown estimate={estimate}/>
             </div>
           </div>
-        </div>
+        </section>
 
         { isModelOpen && (
           <ContactModel

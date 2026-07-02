@@ -1,23 +1,23 @@
 import Link from "next/link";
 
 const links = [
-    { label: "Preturi", href: "#servicii" },
+    { label: "Prețuri", href: "#preturi" },
     { label: "Calculator", href: "#calculator" },
     { label: "Proces", href: "#proces" },
     { label: "Portofoliu", href: "#portofoliu" },
-    { label: "Intrebari", href: "#intrebari" },
+    { label: "Întrebari", href: "#intrebari" },
     { label: "Contact", href: "#contact" },
 ];
 
 export function Header() {
     return (
-      <header className="border-b border-line">
-        <div>
-          <div>
+      <header className="border-b border-ink">
+        <div className="max-w-full mx-auto px-24 py-5 flex items-center justify-between">
+          <div className="flex items-baseline gap-2 text-xl">
             <span>Atelier Tipar</span>  
           </div>
 
-          <nav>
+          <nav className="hidden md:flex items-center gap-10">
             {links.map((l) => (
               <Link
                 key={l.href}
