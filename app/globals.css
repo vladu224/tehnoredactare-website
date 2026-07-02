@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #fbf7ef;
+  --color-paper: #ffffff;
   --color-card: #ffffff;
-  --color-ink: #2b2420;
-  --color-ink-soft: #6b5f52;
-  --color-accent: #8b2635;
-  --color-accent-hover: #6f1e2b;
-  --color-line: #e5dcc8;
+  --color-ink: #111111;
+  --color-ink-soft: #1A1A19;
+  --color-accent: #b64d3b;
+  --color-accent-hover: #ea580c;
+  --color-lime: #22c55e;
 
   --font-display: "Fraunces", serif;
   --font-body: "Inter", sans-serif;
