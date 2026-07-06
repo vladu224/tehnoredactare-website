@@ -16,7 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Calculator cost tehnoredactare",
+  title: "Atelier Tipar",
   description: "Estimează costul tehnoredactării unei cărți în timp real.",
 };
 
@@ -30,7 +30,7 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col scroll-smooth">
         <Header />
         <main>{children}</main>
         <Footer />

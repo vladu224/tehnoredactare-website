@@ -1,13 +1,21 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
 
 @theme {
   --color-paper: #ffffff;
   --color-card: #ffffff;
-  --color-ink: #111111;
-  --color-ink-soft: #1A1A19;
+  --color-ink: #1a1a19;
+  --color-ink-soft: #4b5563;
   --color-accent: #b64d3b;
-  --color-accent-hover: #ea580c;
+  --color-accent-hover: #9d4333;
   --color-lime: #22c55e;
+  --color-bg2: #f4f1e9;
 
   --font-display: "Fraunces", serif;
   --font-body: "Inter", sans-serif;
