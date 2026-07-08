@@ -65,6 +65,6 @@ export function buildEstimationSummaryText (
         `Servicii selectate:`,
         serviceLines,
         ``,
-        `ESTIMARE TOTALA: ${estimation.total.toLocaleString("ro-RO")} lei.`
+        `ESTIMARE TOTALĂ: ${estimation.total.toLocaleString("ro-RO")} lei.`
     ].join("\n");
 }
