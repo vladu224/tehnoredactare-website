@@ -21,8 +21,14 @@ const services: { value: ServiceType; label: string }[] = [
     { value: "corectura", label: "Corectură" },
 ];
 
-export function Contact() {
+export function Contact({ prefillMessage }: ContactProps) {
     const [contact, setContact] = useState<ContactInfo>(emptyContact);
+
+    useEffect(() => {
+        if (prefillMessage) {
+            setContact((current) => ({ ...current, message: prefillMessage }));
+        }
+    }, [prefillMessage]);
 
     function update <K extends keyof ContactInfo>(key: K, val: ContactInfo[K]) {
         setContact({ ...contact, [key]: val });

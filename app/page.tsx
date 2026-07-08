@@ -10,6 +10,7 @@ import { Process } from "@/components/Process";
 import { Testimonials } from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
 import { useState } from "react";
+import { Portofolio } from "@/components/Portofolio";
 
 export default function Home() {
   const [prefillMessage, setPrefillMessage] = useState<string | undefined>();
@@ -25,9 +26,10 @@ export default function Home() {
         <Pricing />
         <Calculator onRequestOffer={handleRequestOffer}/>
         <Process />
+        <Portofolio />
         <Testimonials />
         <Faq /> 
-        <Contact />
+        <Contact prefillMessage={prefillMessage}/>
       </main>
     );
 }
