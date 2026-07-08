@@ -1,0 +1,63 @@
+"use client";
+
+import { useCalculator } from "@/hooks/useCalculator";
+import { PageSlider } from "./PageSlider";
+import { ServiceCheckbox } from "./ServiceCheckbox";
+import { UrgentToggle } from "./UrgentToggle";
+import { EstimationPanel } from "./EstimationPanel";
+import { buildEstimationSummaryText, calculateEstimation } from "@/lib/calculator/calculator";
+
+interface CalculatorProps {
+    onRequestOffer: (summary: string) => void;
+}
+
+export function Calculator({ onRequestOffer }: CalculatorProps) {
+    const { state, estimation, setPageCount, toggleService, setUrgent } = useCalculator();
+
+    function handleRequestOffer() {
+        const summary = buildEstimationSummaryText(state, estimation);
+        onRequestOffer(summary);
+    }
+
+    return (
+        <section id="calculator" className="bg-bg2 mx-auto mx-6 px-24 py-24">
+          <div className="max-w-full mx-auto">
+            <span className="text-accent text-xs font-medium tracking-widest uppercase">
+              Calculator
+            </span>
+
+            <h2 className="font-display text-4xl md:text-5xl text-ink mt-4">
+              Află prețul în 30 de secunde.
+            </h2>
+
+            <p className="text-ink-soft text-lg mt-4 max-w-2xl leading-relaxed">
+              Bifează serviciile, alege numărul de pagini și primești o estimare instant. Oferta fermă vine după ce vedem manuscrisul.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-5 mt-16 border border-line rounded-2xl overflow-hidden">
+            <div className="md:col-span-3 bg-card p-8 space-y-10">
+              <PageSlider
+                value={state.pageCount}
+                onChange={setPageCount}
+              />  
+              <ServiceCheckbox
+                selectedIds={state.selectedServiceIds} 
+                onToggle={toggleService}
+              />
+              <UrgentToggle
+                checked={state.isUrgent}
+                onChange={setUrgent}  
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <EstimationPanel
+                estimation={estimation}
+                onRequestOffer={handleRequestOffer}
+              />  
+            </div>
+          </div>
+        </section>
+    )
+}
