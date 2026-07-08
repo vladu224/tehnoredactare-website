@@ -12,7 +12,7 @@ interface CalculatorProps {
 }
 
 export function Calculator({ onRequestOffer }: CalculatorProps) {
-    const { state, estimation, setPageCount, toggleService, setUrgent } = useCalculator();
+    const { state, estimation, setPageCount, toggleService, setSubOptionValues, setUrgent } = useCalculator();
 
     function handleRequestOffer() {
         const summary = buildEstimationSummaryText(state, estimation);
@@ -43,7 +43,9 @@ export function Calculator({ onRequestOffer }: CalculatorProps) {
               />  
               <ServiceCheckbox
                 selectedIds={state.selectedServiceIds} 
+                subOptionValues={state.subOptionValues}
                 onToggle={toggleService}
+                onSubOptionChange={setSubOptionValues}
               />
               <UrgentToggle
                 checked={state.isUrgent}

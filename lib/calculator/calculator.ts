@@ -8,22 +8,34 @@ export function calculateEstimation(
     const lines: SelectedServiceCheckoutLine[] = state.selectedServiceIds
         .map((id) => serviceOptions.find((s) => s.id === id))
         .filter((s): s is NonNullable<typeof s> => s !== undefined)
-        .map((service) => {
-            if(service.pricingType === "per-page") {
-                const amount = state.pageCount * (service.pricePerPage ?? 0);
-                return {
-                    id: service.id,
-                    label: service.label,
-                    amount: Math.round(amount),
-                    detail: `${state.pageCount} pag × ${service.pricePerPage} lei`,
-                };
-            }
-            return {
+        .flatMap((service) => {
+            const baseAmount = service.pricingType === "per-page"
+                ? state.pageCount * (service.pricePerPage ?? 0)
+                : service.flatPrice ?? 0;
+
+            const baseLine: SelectedServiceCheckoutLine = {
                 id: service.id,
                 label: service.label,
-                amount: service.flatPrice ?? 0,
-                detail: `${service.flatPrice} lei / proiect`,
+                amount: Math.round(baseAmount),
+                detail:
+                    service.pricingType === "per-page"
+                        ? `${state.pageCount} pag × ${service.pricePerPage} lei`
+                        : `${service.flatPrice} lei / proiect`, 
             };
+
+            const subLines: SelectedServiceCheckoutLine[] = (service.subOptions ?? [])
+                .map((sub) => {
+                    const quantity = state.subOptionValues[sub.id] ?? sub.defaultValue;
+                    const amount = quantity * sub.pricePerUnit;
+                    return {
+                        id: sub.id,
+                        label:sub.label,
+                        amount: Math.round(amount),
+                        detail: `${quantity} × ${sub.pricePerUnit} lei`,
+                    };
+                });
+
+            return [baseLine, ...subLines];
         });
     
     const subtotal = lines.reduce((sum, line) => sum + line.amount, 0);

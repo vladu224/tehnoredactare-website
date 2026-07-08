@@ -1,8 +1,36 @@
 import { ServiceOption } from "./types";
 
 export const serviceOptions: ServiceOption[] = [
-    { id: "tehnoredactare", label: "Tehnoredactare interior", pricingType: "per-page", pricePerPage: 7 },
-    { id: "tehnoredactare-complexa", label: "Tehnoredactare complexă (tabele, formule)", pricingType: "per-page", pricePerPage: 9.5 },
+    {
+        id: "tehnoredactare",
+        label: "Tehnoredactare interior",
+        pricingType: "per-page",
+        pricePerPage: 7
+    },
+    {
+        id: "tehnoredactare-complexa",
+        label: "Tehnoredactare complexă (tabele, formule)",
+        pricingType: "per-page",
+        pricePerPage: 9.5,
+        subOptions: [
+            {
+                id: "numar-tabele",
+                label: "Număr tabele",
+                pricePerUnit: 15,
+                min: 0,
+                max: 50,
+                defaultValue: 0,
+            },
+            {
+                id: "numar-formule",
+                label: "Număr formule",
+                pricePerUnit: 8,
+                min: 0,
+                max: 100,
+                defaultValue: 0,
+            },
+        ],
+    },
     { id: "corectura-ortografica", label: "Corectură ortografică", pricingType: "per-page", pricePerPage: 4.75 },
     { id: "corectura-stilistica", label: "Corectură stilistică aprofundată", pricingType: "per-page", pricePerPage: 6.5 },
     { id: "redactare", label: "Redactare / editare de fond", pricingType: "per-page", pricePerPage: 8 },
@@ -10,7 +38,22 @@ export const serviceOptions: ServiceOption[] = [
     { id: "conversie-ebook", label: "Conversie eBook (EPUB + MOBI)", pricingType: "flat", flatPrice: 350 },
     { id: "consultanta-isbn", label: "Consultanță ISBN + CIP", pricingType: "flat", flatPrice: 250 },
     { id: "verificare-bat", label: "Verificare BAT (Bun de Tipar)", pricingType: "flat", flatPrice: 200 },
-    { id: "ilustratii", label: "Ilustrații originale", pricingType: "flat", flatPrice: 1500 },
+    { 
+        id: "ilustratii",
+        label: "Ilustrații originale",
+        pricingType: "per-page",
+        pricePerPage: 5,
+        subOptions: [
+            {
+                id: "numar-ilustratii",
+                label: "Număr ilustrații",
+                pricePerUnit: 70,
+                min: 0,
+                max: 50,
+                defaultValue: 0,
+            },
+        ],
+    },
 ];
 
 export const PAGE_MIN = 50;

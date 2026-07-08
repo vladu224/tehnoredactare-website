@@ -1,11 +1,19 @@
 import { serviceOptions } from "@/lib/calculator/services-pricing";
+import { SubOptionSlider } from "./SubOptionSlider";
 
 interface ServiceCheckboxProps {
     selectedIds: string[];
+    subOptionValues: Record<string, number>;
     onToggle: (id: string) => void;
+    onSubOptionChange: (id: string, value: number) => void;
 }
 
-export function ServiceCheckbox({ selectedIds, onToggle }: ServiceCheckboxProps) {
+export function ServiceCheckbox({ 
+    selectedIds,
+    subOptionValues,
+    onToggle,
+    onSubOptionChange,
+}: ServiceCheckboxProps) {
     return (
         <div>
           <span className="text-ink-soft text-xs tracking-widest uppercase">
@@ -37,6 +45,24 @@ export function ServiceCheckbox({ selectedIds, onToggle }: ServiceCheckboxProps)
                 );
             })}
           </div>
+
+          {serviceOptions
+            .filter((s) => selectedIds.includes(s.id) && s.subOptions)
+            .map((service) => (
+                <div key={service.id} className="border border-line rounded-lg px-4 py-4 mt-3 bg-paper">
+                  <p className="text-ink text-sm font-medium mb-1">
+                    {service.label}
+                  </p>
+                  {service.subOptions!.map((sub) => (
+                    <SubOptionSlider
+                      key={sub.id}
+                      subOption={sub}
+                      value={subOptionValues[sub.id] ?? sub.defaultValue}
+                      onChange={(value) => onSubOptionChange(sub.id, value)}
+                    />
+                  ))}
+                </div>
+            ))}
         </div>
-    )
+    );
 }

@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 const initialState: CurrentFormState = {
     pageCount: 220,
     selectedServiceIds: ["tehnoredactare", "corectura-ortografica", "design-coperta"],
+    subOptionValues: {},
     isUrgent: false,
 };
 
@@ -28,6 +29,13 @@ export function useCalculator() {
         }));
     }
 
+    function setSubOptionValues(id: string, value: number) {
+        setState((current) => ({
+            ...current,
+            subOptionValues: { ...current.subOptionValues, [id]: value },
+        }));
+    }
+
     function setUrgent(isUrgent: boolean) {
         setState((current) => ({ ...current, isUrgent }));
     }
@@ -37,6 +45,7 @@ export function useCalculator() {
         estimation,
         setPageCount,
         toggleService,
+        setSubOptionValues,
         setUrgent,
     }
 }
