@@ -5,7 +5,7 @@ import { Hero } from "@/components/Hero";
 import { Contact } from "@/components/Contact";
 import { Pricing } from "@/components/Pricing";
 import { Services } from "@/components/Services";
-import { Calculator } from "@/components/Calculator";
+import { Calculator } from "@/components/calculator/Calculator";
 import { Process } from "@/components/Process";
 import { Testimonials } from "@/components/Testimonials";
 import { Faq } from "@/components/Faq";
@@ -27,7 +27,7 @@ export default function Home() {
         <Process />
         <Testimonials />
         <Faq /> 
-        <Contact prefillMessage={prefillMessage}/>
+        <Contact />
       </main>
     );
 }
