@@ -45,3 +45,38 @@ export function calculateEstimate(input: BookDetails): FinalPrice {
         total: Math.round(subtotal),
     };
 }
+
+const FORMAT_LABEL: Record<string, string> = {
+    A4: "A4",
+    A5: "A5",
+};
+
+export const DEADLINE_LABEL: Record<string, string> = {
+    standard: "Standard (14 zile)",
+    urgent: "Urgent (7 zile)",
+};
+
+export function buildEstimateSummaryText(
+    details: BookDetails,
+    estimate: FinalPrice
+): string {
+    const contentParts: string[] = [];
+    if (details.hasImages) contentParts.push("imagini");
+    if (details.hasTables) contentParts.push("tabele");
+    if (details.hasFootnotes) contentParts.push("note de subsol");
+
+    const contentLine = 
+        contentParts.length > 0
+            ? `Conține: ${contentParts.join(", ")}.`
+            : "Fără elemente suplimentare.";
+
+    return [
+        `Detalii lucrare:`,
+        `- ${details.pageCount} pagini, format ${FORMAT_LABEL[details.format]}`,
+        `- ${contentLine}`,
+        `- Termen: ${DEADLINE_LABEL[details.deadline]}`,
+        ``,
+        `ESTIMARE CALCULATOR: ${estimate.total.toLocaleString("ro-RO")} RON.`,,
+        `As dori sa discutam proiectul.`
+    ].join("\n");
+}

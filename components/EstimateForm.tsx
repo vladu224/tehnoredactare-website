@@ -2,6 +2,7 @@
 "use client";
 
 import { BookDetails, Format, Deadline } from "@/lib/types";
+import { DEADLINE_LABEL } from "@/lib/pricing";
 
 interface EstimateFormProps {
   value: BookDetails;
@@ -21,7 +22,6 @@ export function EstimateForm({ value, onChange }: EstimateFormProps) {
       </p>
 
       <div className="mt-8 space-y-6">
-        {/* Număr pagini */}
         <div>
           <label className="block text-sm font-medium text-ink mb-2">
             Număr pagini
@@ -90,8 +90,8 @@ export function EstimateForm({ value, onChange }: EstimateFormProps) {
                        text-ink focus:outline-none focus:ring-2 focus:ring-accent/40
                        focus:border-accent transition"
           >
-            <option value="standard">Standard — 14 zile</option>
-            <option value="urgent">Urgent — 7 zile</option>
+            <option value="standard">{DEADLINE_LABEL["standard"]}</option>
+            <option value="urgent">{DEADLINE_LABEL["urgent"]}</option>
           </select>
         </div>
       </div>
