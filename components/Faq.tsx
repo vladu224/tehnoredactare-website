@@ -55,7 +55,7 @@ function FaqItem({
         <div className="border-b border-ink/25">
           <button
             onClick={onToggle}
-            className="w-full flex items-center justify-between gap-6 py-7 text-left group"
+            className="w-full flex items-center justify-between gap-6 py-7 text-left group cursor-pointer"
           >
             <span
               className={`font-display text-xl transition ${
