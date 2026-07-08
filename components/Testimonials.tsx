@@ -2,7 +2,7 @@ import { testimonials, TestimonialData } from "@/lib/testimonials";
 
 export function Testimonials() {
     return (
-        <section className="bg-bg2">
+        <section id="recenzii" className="bg-bg2">
           <div className="max-w-full mx-auto mx-6 px-24 py-40">
             <span className="text-accent text-xs font-medium tracking-widest uppercase">
               Recenzii autori  
