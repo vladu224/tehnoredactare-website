@@ -26,7 +26,7 @@ export function EstimationPanel({ estimation, onRequestOffer}: EstimationPanelPr
           )}
 
           {estimation.lines.length > 0 && (
-            <div className="space-y-5 mt-4 flex-1 max-h-[30vh] overflow-y-auto">
+            <div className="space-y-5 mt-4 mb-2 flex-1 max-h-[30vh] overflow-y-auto">
               {estimation.lines.map((line) => (
                 <div key={line.id} className="flex justify-between items-start gap-4">
                   <div>
