@@ -8,6 +8,7 @@ const links = [
     { label: "Calculator", href: "#calculator" },
     { label: "Proces", href: "#proces" },
     { label: "Portofoliu", href: "#portofoliu" },
+    { label: "Recenzii", href: "#recenzii" },
     { label: "Întrebari", href: "#intrebari" },
     { label: "Contact", href: "#contact" },
 ];
