@@ -27,6 +27,14 @@ export function Hero() {
               className="bg-accent hover:bg-accent-hover text-white font-medium px-6 py-3.5 rounded-sm transition inline-flex items-center gap-2"
             >
               Vezi prețurile
+              <span aria-hidden>→</span>
+            </a>
+            <a
+              href="#servicii"
+              className="text-ink font-medium inline-flex px-6 py-3.5 items-center gap-2 hover:text-accent hover:border-b hover:border-accent transition-colors"
+            >
+              Explorează serviciile
+              <span aria-hidden>↗</span>
             </a>
         </div>
 
