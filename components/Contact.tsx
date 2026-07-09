@@ -2,6 +2,7 @@
 
 import { ContactInfo, ServiceType } from "@/lib/contact";
 import { useEffect, useState } from "react";
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 interface ContactProps {
     prefillMessage?: string;
@@ -40,8 +41,8 @@ export function Contact({ prefillMessage }: ContactProps) {
 
     return (
       <section id="contact" className="max-w-full bg-ink border-t border-ink">
-        <div className="mx-auto mx-6 px-24 py-6 grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-16 ">
-          <div className="flex flex-col flex-start py-8 lg:py-16">
+        <div className="mx-auto mx-6 px-24 py-24 grid grid-cols-1 lg:grid-cols-5 lg:gap-20 ">
+          <div className="flex flex-col col-span-2 flex-start py-8 lg:py-16">
             <span className="text-accent text-xs font-medium tracking-widest uppercase">
               Contact
             </span>
@@ -50,18 +51,29 @@ export function Contact({ prefillMessage }: ContactProps) {
               Hai să dăm <span className="text-accent">formă</span> cărții tale.
             </h2>
 
-            <p className="text-paper/60 mt-6 max-w-md leading-relaxed">
+            <p className="text-paper/60 text-lg mt-6 max-w-lg leading-relaxed">
               Trimite-ne un manuscris, un fragment sau doar o idee. Răspundem în 12 ore lucrătoare cu o estimare onestă.  
             </p>
 
-            <div className="space-y-4 mt-10 text-paper/80 text-sm">
-              <p>vlad.andone04@gmail.com</p>
-              <p>+40 751 587 092</p>
-              <p>Bacău · Strada Apusului 12 (și online)</p>
+            <div className="flex flex-col space-y-4 mt-10 text-paper/80 text-sm">
+              <div className="flex items-center gap-2">
+                <Mail />
+                <p>vlad.andone04@gmail.com</p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Phone />
+                <p>+40 751 587 092</p>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <MapPin/>
+                <p>Bacău · Strada Apusului 12 (și online)</p>
+              </div>
             </div>
           </div>
 
-          <div className="bg-card rounded-md p-10 my-8 lg:my-16">
+          <div className="bg-card col-span-3 rounded-md p-10 my-8 lg:my-16">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
@@ -114,7 +126,7 @@ export function Contact({ prefillMessage }: ContactProps) {
                   Despre proiect
                 </label>
                 <textarea
-                  rows={3}
+                  rows={5}
                   placeholder="Spune-ne câteva cuvinte despre carte, gen, număr de pagini..."
                   value={contact.message}
                   onChange={(e) => update("message", e.target.value)}
