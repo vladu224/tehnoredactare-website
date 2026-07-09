@@ -1,6 +1,6 @@
 "use client";
 
-import { ContactInfo, ServiceType } from "@/lib/contact";
+import { ContactInfo, ServiceType } from "@/lib/types/contact/contact";
 import { useEffect, useState } from "react";
 import { Mail, Phone, MapPin } from 'lucide-react';
 
