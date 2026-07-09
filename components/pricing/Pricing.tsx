@@ -1,4 +1,4 @@
-import { pricingPlans } from "@/lib/pricingPlans";
+import { pricingPlans } from "@/lib/pricing/pricingPlans";
 
 export function Pricing() {
     return (
@@ -29,7 +29,7 @@ function PlanCard({ plan }: { plan: (typeof pricingPlans)[number] }) {
 
     return (
       <div
-        className={`relative rounded-2xl p-8 flex flex-col h-full ${
+        className={`relative rounded-md p-8 flex flex-col h-full ${
           isFeatured
             ? "bg-card border-2 border-accent shadow-lg lg:-my-4 lg:py-12"
             : "bg-card border border-line"
