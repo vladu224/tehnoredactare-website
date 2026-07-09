@@ -35,7 +35,7 @@ export function Calculator({ onRequestOffer }: CalculatorProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 mt-16 border border-line rounded-2xl overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-5 mt-16 border border-ink/25 rounded-md overflow-hidden">
             <div className="md:col-span-3 bg-card p-8 space-y-10">
               <PageSlider
                 value={state.pageCount}

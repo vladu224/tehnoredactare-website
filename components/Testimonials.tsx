@@ -23,7 +23,7 @@ export function Testimonials() {
 }
 function TestimonialCard({ testimonial }: {testimonial: TestimonialData }) {
     return (
-        <div className="bg-card border border-line border-ink/25 rounded-2xl p-8 flex flex-col">
+        <div className="bg-card border border-line border-ink/25 rounded-md p-8 flex flex-col">
           <span className="text-accent text-4xl font-display leading-none" aria-hidden>
             "  
           </span>

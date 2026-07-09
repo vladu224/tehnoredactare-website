@@ -43,7 +43,7 @@ function ServiceCard({
     const Icon = service.icon;
 
     return (
-      <div className="bg-card border border-line border-ink/25 rounded-2xl p-8">
+      <div className="bg-card border border-line border-ink/25 rounded-md p-8">
         <Icon className="w-7 h-7 text-accent" strokeWidth={1.5} />
 
         <h3 className="font-display text-2xl text-ink mt-5">
