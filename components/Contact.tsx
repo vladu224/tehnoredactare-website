@@ -24,6 +24,7 @@ const services: { value: ServiceType; label: string }[] = [
 
 export function Contact({ prefillMessage }: ContactProps) {
     const [contact, setContact] = useState<ContactInfo>(emptyContact);
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle"); 
 
     useEffect(() => {
         if (prefillMessage) {
@@ -35,8 +36,24 @@ export function Contact({ prefillMessage }: ContactProps) {
         setContact({ ...contact, [key]: val });
     }
 
-    function handleSubmit(e: React.FormEvent) {
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
+        setStatus("loading");
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application.json" },
+                body: JSON.stringify(contact)
+            });
+
+            if (!response.ok) throw new Error("Eroare la trimitere");
+
+            setStatus("success");
+            setContact(emptyContact);
+        } catch {
+            setStatus("error");
+        }
     }
 
     return (
@@ -96,7 +113,7 @@ export function Contact({ prefillMessage }: ContactProps) {
                   <input
                     type="email"
                     required
-                    placeholder="ana@email.com"
+                    placeholder="ana.popescu@gmail.com"
                     value={contact.email}
                     onChange={(e) => update("email", e.target.value)}
                     className="w-full border-b border-line bg-transparent pb-2.5 text-ink placeholder:text-ink-soft/50 focus:outline-none focus:border-accent transition"
@@ -136,11 +153,23 @@ export function Contact({ prefillMessage }: ContactProps) {
 
               <button
                 type="submit"
+                disabled={status === "loading"}
                 className="bg-accent hover:bg-accent-hover text-white font-medium px-6 py-3.5 rounded-lg transition inline-flex items-center gap-2 cursor-pointer"
               >
-                Trimite mesajul
+                {status === "loading" ? "Se trimite..." : "Trimite mesajul"}
                 <span aria-hidden>→</span>
               </button>
+
+              {status === "success" && (
+                <p className="text-accent text-sm mt-3">
+                  Mesajul a fost trimis! Revenim în maxim 12h lucrătoare.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-sm mt-3 text-red-700">
+                  Ceva nu a mers bine. Încearcă din nou sau scrie-ne direct pe email.
+                </p>
+              )}
             </form>
           </div>
         </div>
