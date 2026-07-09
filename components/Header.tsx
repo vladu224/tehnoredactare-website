@@ -15,7 +15,7 @@ const links = [
 
 export function Header() {
     const handleScroll = (e: React.FormEvent, targetId: string) => {
-      e.preventDefault(); // Oprește adăugarea de /# sau #servicii în URL care blochează navigarea
+      e.preventDefault(); 
       
       if (targetId === "top") {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -26,7 +26,7 @@ export function Header() {
     };
 
     return (
-      <header className="sticky top-0 z-50 w-full bg-white/40 backdrop-blur-md border-b border-ink/25 shadow-[0_4px_30px_rgba(0,0,0,0.03)]">
+      <header className="sticky top-0 z-50 w-full bg-white/40 backdrop-blur-sm border-b border-ink/25">
         <div className="max-w-full mx-auto px-24 py-5 flex items-center justify-between">
           <div className="flex items-baseline gap-2 text-xl">
             <a

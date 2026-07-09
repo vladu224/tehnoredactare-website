@@ -31,7 +31,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-paper/10 mt-12 pt-6 flex flex-col sm:flex-row justify-between gap-2 text-sm text-paper/50">
-          <span>© 2026 Atelier Tipar. Toate drepturile rezervate.</span>
+          <span>&copy; 2026 Atelier Tipar. Toate drepturile rezervate.</span>
           <div className="flex items-center gap-2">
             <span>Designed &amp; crafted by</span>
             <img 
