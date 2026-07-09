@@ -1,17 +1,17 @@
 "use client";
 
-import { Hero } from "@/components/Hero";
+import { Hero } from "@/components/sections/hero/Hero";
 
-import { Contact } from "@/components/Contact";
-import { Pricing } from "@/components/pricing/Pricing";
-import { PriceList } from "@/components/pricing/PriceList";
-import { Services } from "@/components/Services";
-import { Calculator } from "@/components/calculator/Calculator";
-import { Process } from "@/components/Process";
-import { Testimonials } from "@/components/Testimonials";
-import { Faq } from "@/components/Faq";
+import { Contact } from "@/components/sections/contact/Contact";
+import { Pricing } from "@/components/sections/pricing/Pricing";
+import { PriceList } from "@/components/sections/pricing/PriceList";
+import { Services } from "@/components/sections/services/Services";
+import { Calculator } from "@/components/sections/calculator/Calculator";
+import { Process } from "@/components/sections/process/Process";
+import { Testimonials } from "@/components/sections/testimonials/Testimonials";
+import { Faq } from "@/components/sections/faq/Faq";
 import { useState } from "react";
-import { Portofolio } from "@/components/Portofolio";
+import { Portofolio } from "@/components/sections/portofolio/Portofolio";
 
 
 export default function Home() {
