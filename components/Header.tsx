@@ -9,7 +9,7 @@ const links = [
     { label: "Proces", href: "#proces" },
     { label: "Portofoliu", href: "#portofoliu" },
     { label: "Recenzii", href: "#recenzii" },
-    { label: "Întrebari", href: "#intrebari" },
+    { label: "Întrebări", href: "#intrebari" },
     { label: "Contact", href: "#contact" },
 ];
 
