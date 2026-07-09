@@ -1,4 +1,4 @@
-import { Service } from "@/lib/services";
+import { Service } from "@/lib/data/services/services";
 
 export function ServiceCard({
     service,

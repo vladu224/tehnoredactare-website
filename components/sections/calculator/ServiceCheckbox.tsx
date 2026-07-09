@@ -1,4 +1,4 @@
-import { serviceOptions } from "@/lib/calculator/services-pricing";
+import { serviceOptions } from "@/lib/data/calculator/services-options";
 import { SubOptionSlider } from "./SubOptionSlider";
 
 interface ServiceCheckboxProps {

@@ -1,4 +1,4 @@
-import { portofolioItems } from "@/lib/portofolio";
+import { portofolioItems } from "@/lib/data/portofolio/portofolio";
 
 export function PortofolioCard({
     item,

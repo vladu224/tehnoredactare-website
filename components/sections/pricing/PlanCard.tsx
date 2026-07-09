@@ -1,4 +1,4 @@
-import { pricingPlans } from "@/lib/pricing/pricingPlans";
+import { pricingPlans } from "@/lib/data/pricing/pricingPlans";
 
 export function PlanCard({ plan }: { plan: (typeof pricingPlans)[number] }) {
     const isFeatured = plan.featured;

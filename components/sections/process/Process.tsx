@@ -1,4 +1,4 @@
-import { processSteps } from "@/lib/processSteps";
+import { processSteps } from "@/lib/data/process/processSteps";
 
 export function Process() {
     return (

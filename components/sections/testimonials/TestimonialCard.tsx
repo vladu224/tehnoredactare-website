@@ -1,4 +1,4 @@
-import { TestimonialData } from "@/lib/testimonials";
+import { TestimonialData } from "@/lib/data/testimonials/testimonials";
 
 export function TestimonialCard({ testimonial }: {testimonial: TestimonialData }) {
     return (

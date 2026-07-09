@@ -1,4 +1,4 @@
-import { extraServices, mainServices, type Service } from "@/lib/services";
+import { extraServices, mainServices, type Service } from "@/lib/data/services/services";
 import { ServiceCard } from "./ServiceCard";
 
 export function Services() {

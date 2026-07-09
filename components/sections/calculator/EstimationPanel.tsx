@@ -1,4 +1,4 @@
-import { CheckoutPanelData } from "@/lib/calculator/types";
+import { CheckoutPanelData } from "@/lib/types/calculator/calculator";
 
 interface EstimationPanelProps {
     estimation: CheckoutPanelData;

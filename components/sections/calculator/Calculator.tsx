@@ -5,7 +5,7 @@ import { PageSlider } from "./PageSlider";
 import { ServiceCheckbox } from "./ServiceCheckbox";
 import { UrgentToggle } from "./UrgentToggle";
 import { EstimationPanel } from "./EstimationPanel";
-import { buildEstimationSummaryText, calculateEstimation } from "@/lib/calculator/calculator";
+import { buildEstimationSummaryText, calculateEstimation } from "@/lib/business/calculateEstimation";
 
 interface CalculatorProps {
     onRequestOffer: (summary: string) => void;

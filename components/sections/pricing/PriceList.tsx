@@ -1,4 +1,4 @@
-import { priceListFootnote, priceListItems } from "@/lib/pricing/priceList";
+import { priceListFootnote, priceListItems } from "@/lib/data/pricing/priceList";
 
 export function PriceList() {
     return (

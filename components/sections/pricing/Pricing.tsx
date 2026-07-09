@@ -1,4 +1,4 @@
-import { pricingPlans } from "@/lib/pricing/pricingPlans";
+import { pricingPlans } from "@/lib/data/pricing/pricingPlans";
 import { PlanCard } from "./PlanCard";
 
 export function Pricing() {

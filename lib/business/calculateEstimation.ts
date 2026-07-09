@@ -1,5 +1,5 @@
-import { serviceOptions, URGENT_SURCHARGE } from "./services-pricing";
-import { CheckoutPanelData, CurrentFormState, SelectedServiceCheckoutLine } from "./types";
+import { serviceOptions, URGENT_SURCHARGE } from "../data/calculator/services-options";
+import { CheckoutPanelData, CurrentFormState, SelectedServiceCheckoutLine } from "../types/calculator/calculator";
 
 
 export function calculateEstimation(

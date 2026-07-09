@@ -1,4 +1,4 @@
-import { ServiceSubOption } from "@/lib/calculator/types";
+import { ServiceSubOption } from "@/lib/types/calculator/calculator";
 
 interface SubOptionSliderProps {
     subOption: ServiceSubOption;

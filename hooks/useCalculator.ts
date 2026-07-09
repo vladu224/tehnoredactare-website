@@ -1,5 +1,5 @@
-import { calculateEstimation } from "@/lib/calculator/calculator";
-import { CurrentFormState } from "@/lib/calculator/types";
+import { calculateEstimation } from "@/lib/business/calculateEstimation";
+import { CurrentFormState } from "@/lib/types/calculator/calculator";
 import { useMemo, useState } from "react";
 
 const initialState: CurrentFormState = {

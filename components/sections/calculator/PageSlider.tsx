@@ -1,4 +1,4 @@
-import { PAGE_MAX, PAGE_MIN } from "@/lib/calculator/services-pricing";
+import { PAGE_MAX, PAGE_MIN } from "@/lib/data/calculator/services-options";
 
 interface PageSliderProps {
     value: number;
