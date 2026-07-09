@@ -15,7 +15,7 @@ export function UrgentToggle({ checked, onChange }: UrgentToggleProps) {
             type="checkbox"
             checked={checked}
             onChange={(e) => onChange(e.target.checked)}
-            className="w-5 h-5 rounded border-line text-accent accent-accentfocus:ring-accent/40 cursor-pointer"  
+            className="w-5 h-5 rounded border-line text-accent accent-accent focus:ring-accent/40 cursor-pointer"  
           />
         </label>
     )
