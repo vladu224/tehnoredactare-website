@@ -7,13 +7,13 @@ interface EstimationPanelProps {
 
 export function EstimationPanel({ estimation, onRequestOffer}: EstimationPanelProps) {
     return (
-        <div className="bg-ink p-12 gap-2 h-full flex flex-col">
+        <div className="flex flex-col bg-ink p-6 sm:p-12 gap-2 h-full ">
           <span className="text-accent text-xs font-medium tracking-widest uppercase">
             Estimare
           </span>
           
           <div className="border-b border-paper/40 flex items-baseline gap-2 mt-3 pb-6">
-            <span className="font-display text-5xl text-paper">
+            <span className="font-display text-4xl sm:text-5xl text-paper">
               {estimation.total.toLocaleString("ro-RO")}  
             </span>
             <span className="font-display text-xl text-paper/60">lei</span>
@@ -53,7 +53,7 @@ export function EstimationPanel({ estimation, onRequestOffer}: EstimationPanelPr
           
           <button
             onClick={onRequestOffer}
-            className="w-full bg-accent hover:bg-accent-hover text-white font-medium px-6 py-3.5 rounded-lg mt-auto cursor-pointer"
+            className="w-full bg-accent hover:bg-accent-hover text-white text-sm sm:text-base font-medium px-6 py-3.5 rounded-lg mt-auto cursor-pointer"
           >
             Trimite cererea cu această estimare
             <span aria-hidden>→</span>

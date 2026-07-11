@@ -9,10 +9,10 @@ export function PageSlider({ value, onChange }: PageSliderProps) {
     return (
         <div>
           <div className="flex items-center justify-between">
-            <span className="text-ink-soft text-xs tracking-widest uppercase">
+            <span className="text-ink-soft text-[11px] sm:text-xs tracking-widest uppercase">
               Număr de pagini
             </span>
-            <span className="font-display text-2xl text-ink">
+            <span className="font-display text-xl sm:text-2xl text-ink">
               {value}  
             </span>
           </div>

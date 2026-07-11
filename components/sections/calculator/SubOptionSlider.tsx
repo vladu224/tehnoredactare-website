@@ -10,7 +10,7 @@ export function SubOptionSlider({ subOption, value, onChange }: SubOptionSliderP
     return (
         <div className="mt-4">
           <div className="flex items-center justify-between">
-            <span className="text-ink-soft text-xs tracking-widest uppercase">
+            <span className="text-ink-soft text-[11px] sm:text-xs tracking-widest uppercase">
               {subOption.label}
             </span>
             <span className="font-display text-xl text-ink">

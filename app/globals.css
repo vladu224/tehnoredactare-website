@@ -4,7 +4,13 @@
 @tailwind utilities;
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto !important;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-behavior: smooth !important;
+  }
 }
 
 @theme {

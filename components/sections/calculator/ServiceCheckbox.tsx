@@ -16,11 +16,11 @@ export function ServiceCheckbox({
 }: ServiceCheckboxProps) {
     return (
         <div>
-          <span className="text-ink-soft text-xs tracking-widest uppercase">
+          <span className="text-ink-soft text-[11px] tracking-widest uppercase">
             Servicii incluse
           </span>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mt-4">
             {serviceOptions.map((service) => {
                 const isSelected = selectedIds.includes(service.id);
                 return (
@@ -49,7 +49,7 @@ export function ServiceCheckbox({
           {serviceOptions
             .filter((s) => selectedIds.includes(s.id) && s.subOptions)
             .map((service) => (
-                <div key={service.id} className="border border-line rounded-lg px-4 py-4 mt-3 bg-paper">
+                <div key={service.id} className="border border-ink/25 rounded-lg px-4 py-4 mt-3 bg-paper">
                   <p className="text-ink text-sm font-medium mb-1">
                     {service.label}
                   </p>

@@ -20,23 +20,23 @@ export function Calculator({ onRequestOffer }: CalculatorProps) {
     }
 
     return (
-        <section id="calculator" className="bg-bg2 mx-auto mx-6 px-24 py-24">
-          <div className="max-w-full mx-auto">
+        <section id="calculator" className="bg-bg2 mx-auto px-6 sm:px-24 py-8 sm:py-24">
+          <div className="max-w-full">
             <span className="text-accent text-xs font-medium tracking-widest uppercase">
               Calculator
             </span>
 
-            <h2 className="font-display text-4xl md:text-5xl text-ink mt-4">
+            <h2 className="font-display text-2xl sm:text-5xl text-ink mt-4 sm:mt-12">
               Află prețul în 30 de secunde.
             </h2>
 
-            <p className="text-ink-soft text-lg mt-4 max-w-2xl leading-relaxed">
+            <p className="text-ink-soft text-sm sm:text-lg mt-4 max-w-2xl leading-relaxed">
               Bifează serviciile, alege numărul de pagini și primești o estimare instant. Oferta fermă vine după ce vedem manuscrisul.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 mt-16 border border-ink/25 rounded-md overflow-hidden">
-            <div className="md:col-span-3 bg-card p-8 space-y-10">
+          <div className="grid grid-cols-1 md:grid-cols-5 mt-8 sm:mt-16 -mx-4 sm:mx-0 border border-ink/25 rounded-md overflow-hidden">
+            <div className="sm:col-span-3 bg-card p-4 sm:p-12 space-y-10">
               <PageSlider
                 value={state.pageCount}
                 onChange={setPageCount}

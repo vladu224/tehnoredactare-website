@@ -11,23 +11,23 @@ export function Faq() {
     }
 
     return (
-        <section id="intrebari" className="max-w-full mx-auto mx-6 px-24 py-40">
+        <section id="intrebari" className="max-w-full mx-auto px-6 sm:px-24 py-8 sm:py-40">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div>
               <span className="text-accent text-xs font`-medium tracking-widest uppercase">
                 Întrebări frecvente
               </span>
               
-              <h2 className="font-display text-4xl text-ink mt-4">
+              <h2 className="font-display text-2xl sm:text-4xl text-ink mt-4 sm:mt-12">
                 Răspunsuri pe scurt.
               </h2>
 
-              <p className="text-ink-soft mt-4 leading-relaxed">
+              <p className="text-ink-soft mt-4 leading-relaxed text-sm sm:text-lg">
                 Nu ai găsit ce căutai? Scrie-ne și răspundem în maxim 12 ore lucrătoare.
               </p>
             </div>
 
-            <div className="lg:col-span-2 border-t border-ink/25">
+            <div className="lg:col-span-2 mt-4 sm:mt-0 border-t border-ink/25">
               {faqs.map((faq, index) => (
                 <FaqItem 
                   key={faq.question}
@@ -37,7 +37,7 @@ export function Faq() {
                 />
               ))}
             </div>
-          </div>`  
+          </div>  
         </section>
     );
 }
@@ -55,7 +55,7 @@ function FaqItem({
         <div className="border-b border-ink/25">
           <button
             onClick={onToggle}
-            className="w-full flex items-center justify-between gap-6 py-7 text-left group cursor-pointer"
+            className="w-full flex items-center justify-between gap-6 py-5 sm:py-7 text-left group cursor-pointer"
           >
             <span
               className={`font-display text-xl transition ${
@@ -80,7 +80,7 @@ function FaqItem({
             }`}
           >
             <div className="overflow-hidden">
-              <p className="text-ink-soft leading-relaxed pb-7 max-w-2xl">
+              <p className="text-ink-soft text-sm sm:text-base leading-relaxed pb-7 max-w-2xl">
                 {faq.answer}  
               </p>  
             </div>

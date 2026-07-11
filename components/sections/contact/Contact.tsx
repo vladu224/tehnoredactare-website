@@ -58,21 +58,21 @@ export function Contact({ prefillMessage }: ContactProps) {
 
     return (
       <section id="contact" className="max-w-full bg-ink border-t border-ink">
-        <div className="mx-auto mx-6 px-24 py-24 grid grid-cols-1 lg:grid-cols-5 lg:gap-20 ">
-          <div className="flex flex-col col-span-2 flex-start py-8 lg:py-16">
+        <div className="mx-auto px-6 sm:px-24 py-8 sm:py-24 grid grid-cols-1 lg:grid-cols-5 lg:gap-20 ">
+          <div className="flex flex-col col-span-2 flex-start lg:py-16">
             <span className="text-accent text-xs font-medium tracking-widest uppercase">
               Contact
             </span>
 
-            <h2 className="font-display text-4xl md:text-5xl text-paper leading-tight mt-4">
+            <h2 className="font-display text-2xl md:text-5xl text-paper leading-tight mt-4 sm:mt-12">
               Hai să dăm <span className="text-accent">formă</span> cărții tale.
             </h2>
 
-            <p className="text-paper/60 text-lg mt-6 max-w-lg leading-relaxed">
+            <p className="text-paper/60 text-sm sm:text-lg mt-6 max-w-lg leading-relaxed">
               Trimite-ne un manuscris, un fragment sau doar o idee. Răspundem în 12 ore lucrătoare cu o estimare onestă.  
             </p>
 
-            <div className="flex flex-col space-y-4 mt-10 text-paper/80 text-sm">
+            <div className="flex flex-col space-y-4 mt-10 text-paper/80 text-xs sm:text-sm">
               <div className="flex items-center gap-2">
                 <Mail />
                 <p>vlad.andone04@gmail.com</p>
@@ -90,7 +90,7 @@ export function Contact({ prefillMessage }: ContactProps) {
             </div>
           </div>
 
-          <div className="bg-card col-span-3 rounded-md p-10 my-8 lg:my-16">
+          <div className="bg-card sm:col-span-3 rounded-md p-4 sm:p-10 -mx-4 my-8 lg:my-16">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
@@ -154,7 +154,7 @@ export function Contact({ prefillMessage }: ContactProps) {
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="bg-accent hover:bg-accent-hover text-white font-medium px-6 py-3.5 rounded-lg transition inline-flex items-center gap-2 cursor-pointer"
+                className="bg-accent hover:bg-accent-hover w-full text-white font-medium px-6 py-3.5 rounded-md transition gap-2 cursor-pointer"
               >
                 {status === "loading" ? "Se trimite..." : "Trimite mesajul"}
                 <span aria-hidden>→</span>

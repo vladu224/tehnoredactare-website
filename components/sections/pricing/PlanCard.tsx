@@ -5,28 +5,28 @@ export function PlanCard({ plan }: { plan: (typeof pricingPlans)[number] }) {
 
     return (
       <div
-        className={`relative rounded-md p-8 flex flex-col h-full ${
+        className={`relative rounded-md p-6 sm:p-8 flex flex-col h-full ${
           isFeatured
-            ? "bg-card border-2 border-accent shadow-lg lg:-my-4 lg:py-12"
+            ? "bg-card border-2 border-accent shadow-lg sm:-my-4 sm:py-12"
             : "bg-card border border-line"
         }`}
       >
         {isFeatured && (
-          <span className="absolute -top-3 left-8 bg-accent text-white text-xs font-medium tracking-widest uppercase px-3 py-1 rounded">
+          <span className="absolute -top-3 left-6 sm:left-8 bg-accent text-white text-xs font-medium tracking-widest uppercase px-3 py-1 rounded">
             Recomandat
           </span>  
         )}
 
-        <span className="text-ink-soft text-xs tracking-widest uppercase">
+        <span className="text-ink-soft text-[10px] sm:text-xs tracking-widest uppercase">
           {plan.description}  
         </span>
 
-        <h3 className="font-display text-3xl text-ink mt-3">
+        <h3 className="font-display text-2xl sm:text-3xl text-ink mt-3">
           {plan.name}
         </h3>
 
-        <div className="mt-6">
-          <p className="font-display text-4xl text-ink">
+        <div className="mt-4 sm:mt-6">
+          <p className="font-display text-3xl sm:text-4xl text-ink">
             {plan.priceLabel}
           </p>
           <p className="text-ink-soft text-sm mt-1">
@@ -34,11 +34,11 @@ export function PlanCard({ plan }: { plan: (typeof pricingPlans)[number] }) {
           </p>  
         </div>
 
-        <ul className="space-y-3 mt-8 border-t border-line pt-6 flex-1">
+        <ul className="space-y-2 sm:space-y-3 mt-6 sm:mt-8 border-t border-line pt-4 sm:pt-6 flex-1">
           {plan.features.map((f) => (
             <li key={f}>
               <span>✓</span>
-              <span>{f}</span>  
+              <span className="text-sm sm:text-md">{f}</span>  
             </li>
           ))}
         </ul>

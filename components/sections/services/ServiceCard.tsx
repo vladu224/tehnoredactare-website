@@ -10,10 +10,10 @@ export function ServiceCard({
     const Icon = service.icon;
 
     return (
-      <div className="bg-card border border-line border-ink/25 rounded-md p-8">
-        <Icon className="w-7 h-7 text-accent" strokeWidth={1.5} />
+      <div className="bg-card border border-ink/25 rounded-md p-5 sm:p-8">
+        <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-accent" strokeWidth={1.5} />
 
-        <h3 className="font-display text-2xl text-ink mt-5">
+        <h3 className="font-display text-xl sm:text-2xl text-ink mt-3 sm:mt-5">
           {service.title}
         </h3>
 

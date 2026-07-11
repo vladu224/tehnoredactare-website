@@ -5,10 +5,10 @@ interface UrgentToggleProps {
 
 export function UrgentToggle({ checked, onChange }: UrgentToggleProps) {
     return (
-        <label className="flex items-center justify-between border border-ink/25 rounded-lg px-6 py-5 cursor-pointer bg-paper">
+        <label className="flex items-center justify-between border border-ink/25 rounded-lg px-5 py-5 cursor-pointer bg-paper">
           <div>
-            <p>Regim de urgență</p>
-            <p>Livrare sub 14 zile · supliment +30%</p>
+            <p className="text-sm sm:text-base">Regim de urgență</p>
+            <p className="text-sm sm:text-base">Livrare sub 14 zile · supliment +30%</p>
           </div>
 
           <input
