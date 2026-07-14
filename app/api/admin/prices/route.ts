@@ -1,4 +1,3 @@
-import { verifySessionToken } from "@/lib/auth/session";
 import { getAllPrices } from "@/lib/business/supabase/pricesAdmin";
 import { NextRequest, NextResponse } from "next/server";
 
