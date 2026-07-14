@@ -1,5 +1,5 @@
 import { verifySessionToken } from "@/lib/auth/session";
-import { updatePrice } from "@/lib/business/pricesAdmin";
+import { updatePrice } from "@/lib/business/supabase/pricesAdmin";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function PATCH(

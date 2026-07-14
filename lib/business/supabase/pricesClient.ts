@@ -1,5 +1,5 @@
-import { supabaseClient } from "../supabase/client";
-import { PriceItem } from "../types/prices/prices";
+import { supabaseClient } from "../../supabase/client";
+import { PriceItem } from "../../types/prices/prices";
 
 export async function getPricesByCategory(
     category: PriceItem["category"]

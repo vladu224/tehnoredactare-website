@@ -1,5 +1,5 @@
-import { supabaseAdmin } from "../supabase/admin";
-import { PriceItem } from "../types/prices/prices";
+import { supabaseAdmin } from "../../supabase/admin";
+import { PriceItem } from "../../types/prices/prices";
 
 export async function updatePrice(
     id: string,
