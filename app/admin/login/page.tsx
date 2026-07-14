@@ -77,7 +77,7 @@ export default function AdminLoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-accent hover:bg-accent-hover disabled:opacity-60 text-white font-medium px-6 py-3 rounded-md transition"
+                className="w-full bg-accent hover:bg-accent-hover disabled:opacity-60 text-white font-medium px-6 py-3 rounded-md transition cursor-pointer"
               >
                 {loading ? "Se verifică..." : "Intră în admin "}  
               </button>

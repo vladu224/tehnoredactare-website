@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifySessionToken } from "@/lib/auth/session";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
     const isLoginPage = request.nextUrl.pathname === "/admin/login";
     const token = request.cookies.get("admin_session")?.value;
 

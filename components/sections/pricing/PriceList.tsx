@@ -1,6 +1,39 @@
-import { priceListFootnote, priceListItems } from "@/lib/data/pricing/priceList";
+"use client";
+
+import { priceListFootnote, PriceListItem, priceListItems } from "@/lib/data/pricing/priceListItem";
+import { mapDBPricestoUI } from "@/lib/utils/priceMapper";
+import { useEffect, useState } from "react";
 
 export function PriceList() {
+    const [priceListItems, setPriceListItems] = useState<PriceListItem[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+      const origin = window.location.origin;
+        fetch(`${origin}/api/admin/prices`)
+            .then((res) => {
+                if(!res.ok) throw new Error("Eroare la încărcarea prețurilor");
+                return res.json();
+            })
+            .then((data) => {
+                const formattedData = mapDBPricestoUI(data);
+                setPriceListItems(formattedData)
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.error("Eroare in PriceList: ", err);
+                setLoading(false);
+            });
+    }, []);
+
+    if (loading) {
+        return (
+            <section className="max-w-full mx-auto sm:px-24 py-8 sm:py-24 text-center text-ink-soft">
+              Se încarcă lista de prețuri...
+            </section>
+        )
+    }
+
     return (
         <section className="max-w-full mx-auto sm:px-24 py-8 sm:py-24">
           <div className="bg-bg2 border border-ink/25 rounded-md overflow-hidden">
