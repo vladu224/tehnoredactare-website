@@ -1,21 +1,17 @@
-export interface PricingPlan {
-    id: string;
-    description: string;
-    name: string;
-    priceLabel: string;
-    priceUnit: string;
-    features: string[];
-    ctaLabel: string;
-    featured?: boolean;
+export interface PricingPlanConfig {
+  id: string;
+  description: string;
+  name: string;
+  features: string[];
+  ctaLabel: string;
+  featured?: boolean;
 }
 
-export const pricingPlans: PricingPlan[] = [
-    {
-    id: "esential",
+export const pricingPlans: PricingPlanConfig[] = [
+  {
+    id: "plan-esential",
     description: "Pentru autori la debut",
     name: "Esențial",
-    priceLabel: "de la 1.450",
-    priceUnit: "lei / proiect",
     features: [
       "Tehnoredactare A5 până la 200 pagini",
       "Copertă simplă (1 variantă)",
@@ -26,11 +22,9 @@ export const pricingPlans: PricingPlan[] = [
     ctaLabel: "Cere ofertă",
   },
   {
-    id: "atelier",
+    id: "plan-atelier",
     description: "Cel mai ales pachet",
     name: "Atelier",
-    priceLabel: "de la 2.850",
-    priceUnit: "lei / proiect",
     features: [
       "Tehnoredactare premium până la 350 pagini",
       "Copertă cu 3 concepte + mockup 3D",
@@ -43,11 +37,9 @@ export const pricingPlans: PricingPlan[] = [
     featured: true,
   },
   {
-    id: "manuscris",
+    id: "plan-manuscris",
     description: "Pentru edituri & proiecte ample",
     name: "Manuscris",
-    priceLabel: "personalizat",
-    priceUnit: "tarif negociabil",
     features: [
       "Volume peste 350 pagini sau serii",
       "Design copertă cu ilustrație originală",

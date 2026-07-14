@@ -1,6 +1,6 @@
-import { pricingPlans } from "@/lib/data/pricing/pricingPlans";
+import { pricingPlanFinal } from "@/lib/types/prices/pricingPlan";
 
-export function PlanCard({ plan }: { plan: (typeof pricingPlans)[number] }) {
+export function PlanCard({ plan }: { plan: pricingPlanFinal }) {
     const isFeatured = plan.featured;
 
     return (
