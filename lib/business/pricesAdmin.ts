@@ -15,14 +15,3 @@ export async function updatePrice(
     if (error) throw new Error(error.message);
     return data;
 }
-
-export async function getAllPrices(): Promise<PriceItem[]> {
-    const { data, error } = await supabaseAdmin
-        .from("prices")
-        .select("*")
-        .order("category")
-        .order("id");
-
-    if (error) throw new Error(error.message);
-    return data;
-}

@@ -1,4 +1,4 @@
-import { getPricesByCategory } from "@/lib/business/priceQueries";
+import { getPricesByCategory } from "@/lib/business/pricesClient";
 import { PriceItem } from "@/lib/types/prices/prices";
 import { NextRequest, NextResponse } from "next/server";
 
