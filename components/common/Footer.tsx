@@ -1,5 +1,3 @@
-// src/components/Footer.tsx
-
 export function Footer() {
   return (
     <footer className="bg-ink text-paper/90 border-t border-paper/10">
@@ -31,7 +29,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-paper/10 mt-12 pt-6 flex flex-col sm:flex-row justify-center sm:justify-between gap-2 text-xs sm:text-sm text-paper/50">
-          <span>&copy; 2026 Atelier Tipar. Toate drepturile rezervate.</span>
+          <span>&copy; {new Date().getFullYear()} Atelier Tipar. Toate drepturile rezervate.</span>
           <div className="flex flex-center justify-center items-center gap-2">
             <span>Designed &amp; crafted by</span>
             <img 
