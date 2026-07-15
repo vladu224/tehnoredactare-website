@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
-import { Header } from "@/components/common/Header";
-import { Footer } from "@/components/common/Footer";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -16,8 +14,28 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Atelier Tipar",
-  description: "Estimează costul tehnoredactării unei cărți în timp real.",
+  title: "Atelier Tipar - Tehnoredactare și design de carte",
+  description: "Servicii profesionale de corectură, stilistică și tehnoredactare pentru autori și edituri. Află prețul instant cu calculatorul nostru online.",
+  keywords: ["corectura carte", "tehnoredactare", "editare text", "servicii editoriale", "calculator preturi carti"],
+  authors: [{ name: "VA" }],
+  creator: "VA",
+  metadataBase: new URL("https://ateliertipar.ro"),
+  openGraph: {
+    title: "Atelier Tipar - Tehnoredactare și design de carte",
+    description: "Estimează costul tehnoredactării unei cărți în timp",
+    /*url: */
+    siteName: "Atelier Tipar",
+    locale: "ro_RO",
+    type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Atelier Tipar - Tehnoredactare și design de carte",
+      },
+    ],
+  } 
 };
 
 export default function RootLayout({
