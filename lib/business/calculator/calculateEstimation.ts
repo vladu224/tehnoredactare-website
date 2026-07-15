@@ -1,12 +1,14 @@
 import { serviceOptions, URGENT_SURCHARGE } from "../../data/calculator/services-options";
-import { CheckoutPanelData, CurrentFormState, SelectedServiceCheckoutLine } from "../../types/calculator/calculator";
+import { CheckoutPanelData, CurrentFormState, SelectedServiceCheckoutLine, ServiceOptionFinal } from "../../types/calculator/calculator";
 
 
 export function calculateEstimation(
-    state: CurrentFormState
+    state: CurrentFormState,
+    subitemPrices: ServiceOptionFinal[],
 ): CheckoutPanelData {
+    const optionsMap = new Map(subitemPrices.map((i) => [i.id, i]));
     const lines: SelectedServiceCheckoutLine[] = state.selectedServiceIds
-        .map((id) => serviceOptions.find((s) => s.id === id))
+        .map((id) => optionsMap.get(id))
         .filter((s): s is NonNullable<typeof s> => s !== undefined)
         .flatMap((service) => {
             const baseAmount = service.pricingType === "per-page"

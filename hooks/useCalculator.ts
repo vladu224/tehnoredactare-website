@@ -1,5 +1,5 @@
 import { calculateEstimation } from "@/lib/business/calculator/calculateEstimation";
-import { CurrentFormState } from "@/lib/types/calculator/calculator";
+import { CurrentFormState, ServiceOptionFinal } from "@/lib/types/calculator/calculator";
 import { useMemo, useState } from "react";
 
 const initialState: CurrentFormState = {
@@ -9,12 +9,12 @@ const initialState: CurrentFormState = {
     isUrgent: false,
 };
 
-export function useCalculator() {
+export function useCalculator(subitemPrices: ServiceOptionFinal[]) {
     const [state, setState] = useState<CurrentFormState>(initialState);
 
     const estimation = useMemo(() => 
-        calculateEstimation(state)
-    , [state]);
+        calculateEstimation(state, subitemPrices)
+    , [state, subitemPrices]);
 
     function setPageCount(pageCount: number) {
         setState((current) => ({ ...current, pageCount }));

@@ -2,19 +2,17 @@ import { ServiceOption } from "../../types/calculator/calculator";
 
 export const serviceOptions: ServiceOption[] = [
     {
-        id: "tehnoredactare",
+        id: "calc-tehnoredactare",
         label: "Tehnoredactare interior",
         pricingType: "per-page",
-        pricePerPage: 7
     },
     {
-        id: "tehnoredactare-complexa",
+        id: "calc-tehnoredactare-complexa",
         label: "Tehnoredactare complexă (tabele, formule)",
         pricingType: "per-page",
-        pricePerPage: 9.5,
         subOptions: [
             {
-                id: "numar-tabele",
+                id: "calc-numar-tabele",
                 label: "Număr tabele",
                 pricePerUnit: 15,
                 min: 0,
@@ -22,7 +20,7 @@ export const serviceOptions: ServiceOption[] = [
                 defaultValue: 0,
             },
             {
-                id: "numar-formule",
+                id: "calc-numar-formule",
                 label: "Număr formule",
                 pricePerUnit: 8,
                 min: 0,
@@ -32,55 +30,47 @@ export const serviceOptions: ServiceOption[] = [
         ],
     },
     {
-        id: "corectura-ortografica",
+        id: "calc-corectura-ortografica",
         label: "Corectură ortografică",
         pricingType: "per-page",
-        pricePerPage: 4.75
     },
     {
-        id: "corectura-stilistica",
+        id: "calc-corectura-stilistica",
         label: "Corectură stilistică aprofundată",
         pricingType: "per-page",
-        pricePerPage: 6.5
     },
     {
-        id: "redactare",
+        id: "calc-redactare",
         label: "Redactare / editare de fond",
         pricingType: "per-page",
-        pricePerPage: 8
     },
     {
-        id: "design-coperta",
+        id: "calc-design-coperta",
         label: "Design copertă (3 concepte)",
         pricingType: "flat",
-        flatPrice: 1000
     },
     {
-        id: "conversie-ebook",
+        id: "calc-conversie-ebook",
         label: "Conversie eBook (EPUB + MOBI)",
         pricingType: "flat",
-        flatPrice: 350
     },
     {
-        id: "consultanta-isbn",
+        id: "calc-consultanta-isbn",
         label: "Consultanță ISBN + CIP",
         pricingType: "flat",
-        flatPrice: 250
     },
     {
-        id: "verificare-bat",
+        id: "calc-verificare-bat",
         label: "Verificare BAT (Bun de Tipar)",
         pricingType: "flat",
-        flatPrice: 200
     },
     { 
-        id: "ilustratii",
+        id: "calc-ilustratii",
         label: "Ilustrații originale",
         pricingType: "per-page",
-        pricePerPage: 5,
         subOptions: [
             {
-                id: "numar-ilustratii",
+                id: "calc-numar-ilustratii",
                 label: "Număr ilustrații",
                 pricePerUnit: 70,
                 min: 0,

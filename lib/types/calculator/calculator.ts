@@ -11,6 +11,13 @@ export interface ServiceOption {
     id: string;
     label: string;
     pricingType: "per-page" | "flat";
+    subOptions?: ServiceSubOption[];
+}
+
+export interface ServiceOptionFinal {
+    id: string;
+    label: string;
+    pricingType: "per-page" | "flat";
     pricePerPage?: number;
     flatPrice?: number;
     subOptions?: ServiceSubOption[];

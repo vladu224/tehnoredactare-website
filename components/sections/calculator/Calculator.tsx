@@ -6,13 +6,38 @@ import { ServiceCheckbox } from "./ServiceCheckbox";
 import { UrgentToggle } from "./UrgentToggle";
 import { EstimationPanel } from "./EstimationPanel";
 import { buildEstimationSummaryText, calculateEstimation } from "@/lib/business/calculator/calculateEstimation";
+import { ServiceOptionFinal } from "@/lib/types/calculator/calculator";
+import { useEffect, useState } from "react";
+import { error } from "console";
+import { subitemPricingAdapter } from "@/lib/utils/subitemPricingAdapter";
 
 interface CalculatorProps {
     onRequestOffer: (summary: string) => void;
 }
 
 export function Calculator({ onRequestOffer }: CalculatorProps) {
-    const { state, estimation, setPageCount, toggleService, setSubOptionValues, setUrgent } = useCalculator();
+    const [subitemPrices, setSubitemPrices] = useState<ServiceOptionFinal[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const origin = window.location.origin;
+        fetch(`${origin}/api/admin/prices`)
+            .then((res) => {
+                if(!res.ok) throw new Error("Eroare la incarcarea preturilor in sectiunea Calculator");
+                return res.json();
+            })
+            .then((data) => {
+                const formattedData = subitemPricingAdapter(data);
+                setSubitemPrices(formattedData);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("Eroare in Calculator: ", error);
+                setLoading(false);
+            })
+
+    }, []);
+    const { state, estimation, setPageCount, toggleService, setSubOptionValues, setUrgent } = useCalculator(subitemPrices);
 
     function handleRequestOffer() {
         const summary = buildEstimationSummaryText(state, estimation);
