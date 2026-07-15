@@ -65,7 +65,7 @@ export function Header() {
           <div>
             <a 
               href="#contact"
-              className="hidden lg:inline-flex bg-accent hover:bg-accent-hover text-white text-sm font-medium px-5 py-2.5 rounded-lg items-center gap-1.5"
+              className="hidden lg:inline-flex bg-accent hover:bg-accent-hover text-white text-sm font-medium px-5 py-2.5 rounded-md items-center gap-1.5"
             >
               Cere oferta
             </a>

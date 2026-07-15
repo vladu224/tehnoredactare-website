@@ -157,8 +157,12 @@ export function Contact({ prefillMessage }: ContactProps) {
                 className="bg-accent hover:bg-accent-hover w-full text-white font-medium px-6 py-3.5 rounded-md transition gap-2 cursor-pointer"
               >
                 {status === "loading" ? "Se trimite..." : "Trimite mesajul"}
+                
                 <span aria-hidden>→</span>
               </button>
+              <p className="text-ink-soft text-xs mt-3">
+                  * Prin trimiterea formularului, ești de acord cu prelucrarea datelor pentru a-ți răspunde la cerere.
+                </p>
 
               {status === "success" && (
                 <p className="text-accent text-sm mt-3">
