@@ -1,6 +1,6 @@
 const stats = [
     { value: "120+", label: "Titluri publicate" },
-    { value: "6 ani", label: "Experiență editorială" },
+    { value: `${new Date().getFullYear() - 2011} ani`, label: "Experiență editorială" },
     { value: "4.9/5", label: "Rating clienți" },
 ];
 
