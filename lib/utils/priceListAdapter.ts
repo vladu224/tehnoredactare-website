@@ -1,7 +1,7 @@
 import { PriceListItem } from "../data/pricing/priceListItem";
 import { PriceItem } from "../types/prices/prices";
 
-export function mapDBPricestoUI(dbPrices: PriceItem[]): PriceListItem[] {
+export function priceListAdapter(dbPrices: PriceItem[]): PriceListItem[] {
     const priceListItemsFromDB = dbPrices.filter((item) => item.category === "pricelist");
 
     return priceListItemsFromDB.map((item) => {

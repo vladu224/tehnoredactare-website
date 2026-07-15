@@ -1,7 +1,7 @@
 "use client";
 
 import { priceListFootnote, PriceListItem, priceListItems } from "@/lib/data/pricing/priceListItem";
-import { mapDBPricestoUI } from "@/lib/utils/priceMapper";
+import { priceListAdapter } from "@/lib/utils/priceListAdapter";
 import { useEffect, useState } from "react";
 
 export function PriceList() {
@@ -16,7 +16,7 @@ export function PriceList() {
                 return res.json();
             })
             .then((data) => {
-                const formattedData = mapDBPricestoUI(data);
+                const formattedData = priceListAdapter(data);
                 setPriceListItems(formattedData)
                 setLoading(false);
             })
