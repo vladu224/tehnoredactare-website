@@ -5,33 +5,41 @@ import Link from "next/link";
 import { useState } from "react";
 
 const links = [
-    { label: "Servicii", href: "#servicii" },
-    { label: "Prețuri", href: "#preturi" },
-    { label: "Calculator", href: "#calculator" },
-    { label: "Proces", href: "#proces" },
-    { label: "Portofoliu", href: "#portofoliu" },
-    { label: "Recenzii", href: "#recenzii" },
-    { label: "Întrebări", href: "#intrebari" },
-    { label: "Contact", href: "#contact" },
+    { label: "Servicii", href: "servicii" },
+    { label: "Prețuri", href: "preturi" },
+    { label: "Calculator", href: "calculator" },
+    { label: "Proces", href: "proces" },
+    { label: "Portofoliu", href: "portofoliu" },
+    { label: "Recenzii", href: "recenzii" },
+    { label: "Întrebări", href: "intrebari" },
+    { label: "Contact", href: "contact" },
 ];
 
 export function Header() {
     const [isMenuOpen, setMenuOpen] = useState(false);
 
-    const handleScroll = (e: React.FormEvent, targetId: string) => {
-      e.preventDefault(); 
+    const handleScroll = (e: React.MouseEvent, targetId: string) => {
+      e.preventDefault();
+      e.stopPropagation();
       
-      if (targetId === "top") {
-        const isMobile = window.innerWidth < 768;
+      const isMobile = window.innerWidth < 768;
 
+      if (targetId === "top") {
         window.scrollTo({ 
           top: 0,
-          behavior: isMobile ? "auto" : "smooth" });
-
-        window.history.pushState(null, "", window.location.pathname);
-        closeMenu();
-        return;
+          behavior: isMobile ? "auto" : "smooth" 
+        });
+      } else {  
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({
+            behavior: isMobile ? "auto" : "smooth"
+          });
+        }
       }
+
+      window.history.pushState(null, "", window.location.pathname);
+      closeMenu();
     };
 
     function closeMenu() {
@@ -54,7 +62,8 @@ export function Header() {
             {links.map((l) => (
               <Link
                 key={l.href}
-                href={l.href}
+                href="#"
+                onClick={(e) => handleScroll(e, l.href)}
                 className="text-sm text-ink hover:text-accent hover:border-b transition"
               >
                 {l.label}
@@ -91,8 +100,11 @@ export function Header() {
               {links.map((l) => (
               <Link
                 key={l.href}
-                href={l.href}
-                onClick={closeMenu}
+                href="#"
+                onClick={(e) => {
+                  handleScroll(e, l.href);
+                  closeMenu();
+                }}
                 className="text-ink text-base py-3.5 border-b border-ink/10 last:border-b-0 hover:text-accent transition flex items-center min-h-[44px]"
               >
                 {l.label}
