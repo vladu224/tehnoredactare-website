@@ -45,7 +45,7 @@ export function Portofolio() {
             Un mic ocean de titluri din zona literară, non-ficțiune, business și poezie.
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 mt-12 sm:mt-16">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-6 gap-10 sm:gap-12 mt-12 sm:mt-16">
             {items.map((item, index) => (
               <PortofolioCard key={item.id} item={item} index={index} />  
             ))}
