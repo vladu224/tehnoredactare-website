@@ -1,6 +1,6 @@
 "use client";
 
-import { PortofolioUpdate } from "@/components/admin/PortofolioUpdate";
+import { Portofolio } from "@/components/admin/portofolio/Portofolio";
 import { PriceRow } from "@/components/admin/PriceRow";
 import { PriceItem } from "@/lib/types/prices/prices";
 import { useRouter } from "next/navigation";
@@ -109,7 +109,7 @@ export default function AdminPage() {
           </div>
 
           <div className="mt-10 mb-10">
-            <PortofolioUpdate />
+            <Portofolio />
           </div>
         </div>
     );
