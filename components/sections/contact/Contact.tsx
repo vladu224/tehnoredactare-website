@@ -22,8 +22,14 @@ const services: { value: ServiceType; label: string }[] = [
     { value: "corectura", label: "Corectură" },
 ];
 
+interface FormErrors {
+    name?: string;
+    email?: string;
+}
+
 export function Contact({ prefillMessage }: ContactProps) {
     const [contact, setContact] = useState<ContactInfo>(emptyContact);
+    const [errors, setErrors] = useState<FormErrors>({});
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle"); 
 
     useEffect(() => {
@@ -34,10 +40,36 @@ export function Contact({ prefillMessage }: ContactProps) {
 
     function update <K extends keyof ContactInfo>(key: K, val: ContactInfo[K]) {
         setContact({ ...contact, [key]: val });
+        
+        if (errors[key as keyof FormErrors]) {
+            setErrors(prev => ({ ...prev, [key]: undefined }));
+        }
+    }
+
+    function validateForm(): boolean {
+        const tempErrors: FormErrors = {};
+        
+        if (!contact.name.trim()) {
+            tempErrors.name = "Te rugăm să introduci numele tău.";
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!contact.email.trim()) {
+            tempErrors.email = "Te rugăm să introduci adresa de email.";
+        } else if (!emailRegex.test(contact.email)) {
+            tempErrors.email = "Te rugăm să introduci o adresă de email validă.";
+        }
+
+        setErrors(tempErrors);
+        
+        return Object.keys(tempErrors).length === 0;
     }
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
+        
+        if (!validateForm()) return;
+
         setStatus("loading");
 
         try {
@@ -51,6 +83,7 @@ export function Contact({ prefillMessage }: ContactProps) {
 
             setStatus("success");
             setContact(emptyContact);
+            setErrors({});
         } catch {
             setStatus("error");
         }
@@ -91,7 +124,7 @@ export function Contact({ prefillMessage }: ContactProps) {
           </div>
 
           <div className="bg-card sm:col-span-3 rounded-md p-4 sm:p-10 -mx-4 my-8 lg:my-16">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} noValidate className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-xs font-medium tracking-wide uppercase text-ink-soft mb-2">
@@ -99,25 +132,38 @@ export function Contact({ prefillMessage }: ContactProps) {
                   </label>
                   <input
                     type="text"
-                    required
                     placeholder="Ana Popescu"
                     value={contact.name}
                     onChange={(e) => update("name", e.target.value)}
-                    className="w-full border-b border-line bg-transparent pb-2.5 text-ink placeholder:text-ink-soft/50 focus:outline-none focus:border-accent transition"
+                    className={`w-full border-b bg-transparent pb-2.5 text-ink placeholder:text-ink-soft/50 focus:outline-none transition ${
+                      errors.name ? "border-red-500 focus:border-red-500" : "border-line focus:border-accent"
+                    }`}
                   />
+                  {errors.name && (
+                    <p className="text-red-500 text-xs font-medium mt-1.5 flex items-center gap-1 animate-shake">
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
+                
                 <div>
                   <label className="block text-xs font-medium tracking-wide uppercase text-ink-soft mb-2">
                     Email
                   </label>
                   <input
                     type="email"
-                    required
                     placeholder="ana.popescu@gmail.com"
                     value={contact.email}
                     onChange={(e) => update("email", e.target.value)}
-                    className="w-full border-b border-line bg-transparent pb-2.5 text-ink placeholder:text-ink-soft/50 focus:outline-none focus:border-accent transition"
+                    className={`w-full border-b bg-transparent pb-2.5 text-ink placeholder:text-ink-soft/50 focus:outline-none transition ${
+                      errors.email ? "border-red-500 focus:border-red-500" : "border-line focus:border-accent"
+                    }`}
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-xs font-medium mt-1.5 flex items-center gap-1 animate-shake">
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
               </div>  
 
@@ -160,9 +206,10 @@ export function Contact({ prefillMessage }: ContactProps) {
                 
                 <span aria-hidden>→</span>
               </button>
+              
               <p className="text-ink-soft text-xs mt-3">
-                  * Prin trimiterea formularului, ești de acord cu prelucrarea datelor pentru a-ți răspunde la cerere.
-                </p>
+                * Prin trimiterea formularului, ești de acord cu prelucrarea datelor pentru a-ți răspunde la cerere.
+              </p>
 
               {status === "success" && (
                 <p className="text-accent text-sm mt-3">
