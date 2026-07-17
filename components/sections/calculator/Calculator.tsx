@@ -8,7 +8,6 @@ import { EstimationPanel } from "./EstimationPanel";
 import { buildEstimationSummaryText, calculateEstimation } from "@/lib/business/calculator/calculateEstimation";
 import { ServiceOptionFinal } from "@/lib/types/calculator/calculator";
 import { useEffect, useState } from "react";
-import { error } from "console";
 import { subitemPricingAdapter } from "@/lib/utils/subitemPricingAdapter";
 
 interface CalculatorProps {
