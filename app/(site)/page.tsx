@@ -26,7 +26,6 @@ export default function Home() {
         <Hero />
         <Services />
         <Pricing />
-        <PriceList />
         <Calculator onRequestOffer={handleRequestOffer}/>
         <Process />
         <Portofolio />

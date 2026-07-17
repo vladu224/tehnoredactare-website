@@ -35,7 +35,7 @@ export function PriceList() {
     }
 
     return (
-        <section className="max-w-full mx-auto sm:px-24 py-8 sm:py-24">
+        <section className="max-w-full py-8 sm:py-24 mt-20">
           <div className="bg-bg2 border border-ink/25 rounded-md overflow-hidden">
             <div className="bg-paper/60 flex items-center justify-between px-4 sm:px-8 py-7 border-b border-ink/25">
               <h3 className="font-display text-lg sm:text-2xl text-ink">
