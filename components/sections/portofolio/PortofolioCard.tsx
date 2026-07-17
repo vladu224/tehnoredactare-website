@@ -1,16 +1,24 @@
-import { portofolioItems } from "@/lib/data/portofolio/portofolio";
+import { getPortofolioItems } from "@/lib/business/portofolio/portofolioClient";
 
 export function PortofolioCard({
     item,
     index,
 }: {
-    item: (typeof portofolioItems)[number];
+    item: Awaited<ReturnType<typeof getPortofolioItems>>[number];
     index: number;
 }) {
     return (
-        <div>
-          <div
-            className="-mx-4 sm:-mx-0 rounded-md sm:p-6 flex flex-col gap-20 sm:gap-70"
+      <div>
+        <div className="aspect-[3/4] rounded-md overflow-hiddem relative">
+          {item.image_url ? (
+            <img
+              src={item.image_url}
+              alt={item.title}
+              className="w-full h-full object-cover rounded-md"
+            />
+          ) : (
+            <div
+            className="aspect-[3/4] rounded-md sm:p-6 flex flex-col gap-10 sm:gap-74"
             style={{
               background:
                 "linear-gradient(160deg, #EFE9DA 0%, #F7F2E6 55%, #EDE6D6 100%)"  
@@ -18,7 +26,7 @@ export function PortofolioCard({
           >
             <div className="border-t border-accent/40 mt-3" />
             
-            <h3 className="font-display text-xl sm:text-2xl text-ink text-center">
+            <h3 className="font-display text-xl sm:text-2xl text-ink text-center pt-6 sm:pt-0">
               {item.title}
             </h3>
             
@@ -32,9 +40,21 @@ export function PortofolioCard({
                 </span>
               </div>
                 
-              <div className="border-t border-accent/40 mt-3 mb-3" />
+              <div className="border-t border-accent/40 mt-3"/>
             </div>
           </div>
+          )}
         </div>
+        
+        <h4 className="font-display text-sm sm:text-lg text-ink mt-2">{item.title}</h4>
+        <div className="flex flex-row items-baseline justify-between mt-1">
+          <span className="text-ink-soft text-[10px] sm:text-xs tracking-widest uppercase mt-1 block">
+            {item.category}
+          </span>
+          <span className="text-ink-soft text-xs sm:text-sm shrink-0 ml-4">
+            {item.year}
+          </span>
+        </div>
+      </div>
     );
 }

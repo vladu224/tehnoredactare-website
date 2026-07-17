@@ -1,7 +1,36 @@
-import { portofolioItems } from "@/lib/data/portofolio/portofolio"
+import { PortofolioItem } from "@/lib/types/portofolio/portofolio";
 import { PortofolioCard } from "./PortofolioCard"
+import { getPortofolioItems } from "@/lib/business/portofolio/portofolioClient"
+import { useEffect, useState } from "react";
 
 export function Portofolio() {
+    const [items, setItems] = useState<PortofolioItem[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function loadData() {
+            try {
+                const data = await getPortofolioItems();
+                setItems(data);
+                setLoading(false);
+            } catch (error) {
+                console.error("Eroare neașteptată la încărcare:", error);
+            }
+        }
+
+        loadData();
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="max-w-full mx-auto px-6 py-24 text-center text-ink-soft">
+              Se încarcă portofoliul...
+            </div>
+        );
+    }
+
+    if (items.length === 0) return null;
+
     return (
         <section id="portofoliu" className="max-w-full mx-auto px-6 sm:px-24 py-8 sm:py-24">
           <span className="text-accent text-xs font-medium tracking-widest uppercase">
@@ -17,11 +46,11 @@ export function Portofolio() {
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 mt-12 sm:mt-16">
-            {portofolioItems.map((item, index) => (
-              <PortofolioCard key={item.title} item={item} index={index}/>  
+            {items.map((item, index) => (
+              <PortofolioCard key={item.id} item={item} index={index} />  
             ))}
           </div>
         </section>
-    )
+    );
 }
 
