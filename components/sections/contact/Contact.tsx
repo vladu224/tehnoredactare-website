@@ -106,15 +106,23 @@ export function Contact({ prefillMessage }: ContactProps) {
             </p>
 
             <div className="flex flex-col space-y-4 mt-10 text-paper/80 text-xs sm:text-sm">
-              <div className="flex items-center gap-2">
+              <a
+                href="mailto:vlad.andone04@gmail.com"
+                className="flex items-center gap-2 hover:text-accent transition-colors cursor-pointer"
+                title="Trimite-ne un email"
+              >
                 <Mail />
                 <p>vlad.andone04@gmail.com</p>
-              </div>
+              </a>
 
-              <div className="flex items-center gap-2">
+              <a
+                href="tel:+40 751 587 092"
+                className="flex items-center gap-2 hover:text-accent transition-colors cursor-pointer"
+                title="Trimite-ne un email"
+              >
                 <Phone />
                 <p>+40 751 587 092</p>
-              </div>
+              </a>
               
               <div className="flex items-center gap-2">
                 <MapPin/>
