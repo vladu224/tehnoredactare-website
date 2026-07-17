@@ -58,7 +58,7 @@ function FaqItem({
             className="w-full flex items-center justify-between gap-6 py-5 sm:py-7 text-left group cursor-pointer"
           >
             <span
-              className={`font-display text-xl transition ${
+              className={`font-display text-lg sm:text-xl transition ${
                 isOpen ? "text-accent" : "text-ink group-hover:text-accent"
               }`}
             >
