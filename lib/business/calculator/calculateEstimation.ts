@@ -57,9 +57,14 @@ export function buildEstimationSummaryText (
     state: CurrentFormState,
     estimation: CheckoutPanelData
 ): string {
+
     const serviceLines = estimation.lines
         .map((l) => `- ${l.label} (${l.detail}) -> ${l.amount} lei`)
         .join("\n");
+
+    if (!serviceLines || serviceLines.length === 0) {
+        return "";
+    }
 
     return [
         `Detalii lucrare: ${state.pageCount} pagini ${state.isUrgent ? ", regim de urgență" : ""}`,

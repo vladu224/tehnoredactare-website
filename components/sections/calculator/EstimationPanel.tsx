@@ -1,4 +1,5 @@
 import { CheckoutPanelData } from "@/lib/types/calculator/calculator";
+import { useEffect, useState } from "react";
 
 interface EstimationPanelProps {
     estimation: CheckoutPanelData;
@@ -6,6 +7,19 @@ interface EstimationPanelProps {
 }
 
 export function EstimationPanel({ estimation, onRequestOffer}: EstimationPanelProps) {
+
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+    useEffect(() => {
+        if(!errorMessage) return;
+
+        const timer = setTimeout(() => {
+            setErrorMessage(null);
+        }, 3000);
+
+        return () => clearTimeout(timer);
+    }, [errorMessage]);
+
     return (
         <div className="flex flex-col bg-ink p-6 sm:p-12 gap-2 h-full ">
           <span className="text-accent text-xs font-medium tracking-widest uppercase">
@@ -50,14 +64,27 @@ export function EstimationPanel({ estimation, onRequestOffer}: EstimationPanelPr
               )}
             </div>
           )}
-          
+
           <button
-            onClick={onRequestOffer}
+            onClick={() => {
+              if(estimation.lines.length < 1) {
+                setErrorMessage("Trebuie selectat minim 1 serviciu pentru a putea trimite cererea.")
+                return;
+              }
+              setErrorMessage(null);
+              onRequestOffer();
+            }}
             className="w-full bg-accent hover:bg-accent-hover text-white text-sm sm:text-base font-medium px-6 py-3.5 rounded-lg mt-auto cursor-pointer"
           >
             Trimite cererea cu această estimare
             <span aria-hidden>→</span>
           </button>
+
+          {errorMessage && (
+            <p className="text-[10px] sm:text-sm text-red-500 font-medium animate-shake mt-1">
+              {errorMessage}
+            </p>
+          )}
 
           <p className="text-paper/40 text-xs mt-4 leading-relaxed">
             * Estimarea este orientativă. Oferta fermă vine după ce analizăm manuscrisul (gratuit, 48h).
