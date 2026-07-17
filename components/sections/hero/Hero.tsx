@@ -1,3 +1,5 @@
+import { handleScroll } from "@/lib/utils/handleScroll";
+
 const stats = [
     { value: "120+", label: "Titluri publicate" },
     { value: `${new Date().getFullYear() - 2011} ani`, label: "Experiență editorială" },
@@ -23,14 +25,16 @@ export function Hero() {
 
         <div className="flex flex-col sm:flex-row items-stretch gap-3 sm:gap-6 mt-10 sm:mt-16 mb-10">
             <a
-              href="#preturi"
+              href="#"
+              onClick={(e) => handleScroll(e, "preturi")}
               className="bg-accent hover:bg-accent-hover text-white font-medium px-6 py-3.5 rounded-sm transition inline-flex items-center justify-center gap-2"
             >
               Vezi prețurile
               <span aria-hidden>→</span>
             </a>
             <a
-              href="#servicii"
+              href="#"
+              onClick={(e) => handleScroll(e, "servicii")}
               className="text-ink font-medium inline-flex px-6 py-3.5 items-center justify-center gap-2 hover:text-accent hover:border-b hover:border-accent transition-colors"
             >
               Explorează serviciile

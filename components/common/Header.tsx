@@ -1,5 +1,6 @@
 "use client";
 
+import { handleScroll } from "@/lib/utils/handleScroll";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -18,30 +19,6 @@ const links = [
 export function Header() {
     const [isMenuOpen, setMenuOpen] = useState(false);
 
-    const handleScroll = (e: React.MouseEvent, targetId: string) => {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      const isMobile = window.innerWidth < 768;
-
-      if (targetId === "top") {
-        window.scrollTo({ 
-          top: 0,
-          behavior: isMobile ? "auto" : "smooth" 
-        });
-      } else {  
-        const element = document.getElementById(targetId);
-        if (element) {
-          element.scrollIntoView({
-            behavior: isMobile ? "auto" : "smooth"
-          });
-        }
-      }
-
-      window.history.pushState(null, "", window.location.pathname);
-      closeMenu();
-    };
-
     function closeMenu() {
         setMenuOpen(false);
     }
@@ -52,7 +29,7 @@ export function Header() {
           <div className="flex items-baseline text-lg lg:text:xl">
             <a
               href="#"
-              onClick={(e) => handleScroll(e, "top")}
+              onClick={(e) => {handleScroll(e, "top");closeMenu();}}
             >
               Atelier Tipar  
             </a> 
@@ -73,7 +50,8 @@ export function Header() {
 
           <div>
             <a 
-              href="#contact"
+              href="#"
+              onClick={(e) => handleScroll(e, "contact")}
               className="hidden lg:inline-flex bg-accent hover:bg-accent-hover text-white text-sm font-medium px-5 py-2.5 rounded-md items-center gap-1.5"
             >
               Cere oferta
@@ -113,8 +91,11 @@ export function Header() {
             </div>
             
             <a
-              href="#contact"
-              onClick={closeMenu}
+              href="#"
+              onClick={(e) => {
+                handleScroll(e, "contact");
+                closeMenu();
+              }}
               className="flex justify-center bg-accent hover:bg-accent-hover text-white text-sm font-medium px-5 py-3.5 rounded-md transition mt-4 min-h-[44px]"
             >
               Cere oferta

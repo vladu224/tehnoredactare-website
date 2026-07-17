@@ -1,4 +1,5 @@
 import { pricingPlanFinal } from "@/lib/types/prices/pricingPlan";
+import { handleScroll } from "@/lib/utils/handleScroll";
 
 export function PlanCard({ plan }: { plan: pricingPlanFinal }) {
     const isFeatured = plan.featured;
@@ -44,7 +45,8 @@ export function PlanCard({ plan }: { plan: pricingPlanFinal }) {
         </ul>
 
         <a
-          href="#contact"
+          href="#"
+          onClick={(e) => handleScroll(e, "contact")}
           className={`mt-8 text-center font-medium px-6 py-3 rounded-lg transition inline-flex items-center justify-center gap-2 ${
             isFeatured
               ? "bg-accent hover:bg-accent-hover text-white"
