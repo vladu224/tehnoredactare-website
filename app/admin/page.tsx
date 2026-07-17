@@ -68,7 +68,7 @@ export default function AdminPage() {
 
             <button
               onClick={handleLogout}
-              className="self-start sm:self-center text-sm font-medium border border-line rounded-lg px-4 py-2.5 text-ink-soft hover:text-ink hover:border-accent hover:bg-card transition-all duration-200 cursor-pointer shadow-sm"
+              className="self-start sm:self-center text-sm font-medium border border-line rounded-md px-4 py-2.5 text-ink-soft hover:text-ink hover:border-accent hover:bg-card transition-all duration-200 cursor-pointer shadow-md"
             >
               Ieși din cont
             </button>
@@ -87,12 +87,12 @@ export default function AdminPage() {
 
                   <div className="border border-line rounded-2xl overflow-hidden bg-card shadow-sm transition-shadow hover:shadow-md duration-300">
                                 
-                    <div className="grid grid-cols-[2fr_1fr_1fr_1fr_auto] gap-4 px-6 py-3.5 bg-ink/[0.02] border-b border-line text-xs font-semibold tracking-wider text-ink-soft uppercase">
+                    <div className="grid grid-cols-3 sm:grid-cols-[2fr_1fr_1fr_1fr_auto] gap-3 sm:gap-4 px-6 py-3.5 bg-ink/[0.02] border-b border-line text-xs font-semibold tracking-wider text-ink-soft uppercase">
                       <span>Serviciu</span>
                       <span>Preț Min</span>
                       <span>Preț Max</span>
                       <span>Unitate</span>  
-                      <span className="text-right">Acțiuni</span>
+                      <span className="sm:text-right">Acțiuni</span>
                     </div>
 
                     <div className="divide-y divide-line">
