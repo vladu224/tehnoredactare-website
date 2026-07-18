@@ -1,5 +1,5 @@
 import { verifySessionToken } from "@/lib/auth/session";
-import { createPortofolioItem, getAllPortofolioItems } from "@/lib/business/portofolio/portfolioAdmin";
+import { createPortofolioItem, getAllPortofolioItems } from "@/lib/business/portofolio/portofolioAdmin";
 import { NextRequest, NextResponse } from "next/server";
 
 async function requireAuth(request: NextRequest) {
