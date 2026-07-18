@@ -1,5 +1,5 @@
 import { verifySessionToken } from "@/lib/auth/session";
-import { updatePortofolioItemImage, uploadCoverImage } from "@/lib/business/portofolio/portfolioAdmin";
+import { updatePortofolioItemImage, uploadCoverImage } from "@/lib/business/portofolio/portofolioAdmin";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(
