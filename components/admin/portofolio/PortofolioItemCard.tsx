@@ -23,7 +23,7 @@ export function PortofolioItemCard({
         const formData = new FormData();
         formData.append("file", file);
 
-        const response = await fetch(`/api/admin/portofolio/${item.id}/upload-cover`, {
+        const response = await fetch(`/api/admin/portofolio/${item.id}/image`, {
             method: "POST",
             body: formData,
         });
@@ -40,13 +40,29 @@ export function PortofolioItemCard({
         const formData = new FormData();
         formData.append("file", file);
 
-        const response = await fetch(`/api/admin/portofolio/${item.id}/upload-pdf`, {
+        const response = await fetch(`/api/admin/portofolio/${item.id}/pdf`, {
             method: "POST",
             body: formData,
         });
 
         if (response.ok) onUploaded();
         setUploadingPdf(false);
+    }
+
+    async function handleRemoveImage() {
+        if (!confirm("Ștergi coperta acestui titlu?")) return;
+        await fetch(`/api/admin/portofolio/${item.id}/image`, {
+            method: "DELETE"
+        });
+        onUploaded();
+    }
+
+    async function handleRemovePdf() {
+        if (!confirm("Ștergi PDF-ul acestui titlu?")) return;
+        await fetch(`/api/admin/portofolio/${item.id}/pdf`, {
+            method: "DELETE"
+        });
+        onUploaded();
     }
 
     return (
@@ -84,19 +100,32 @@ export function PortofolioItemCard({
               <button
                 onClick={() => fileInputRef.current?.click()}
                 disabled={uploadingImage}
-                className="flex-1 text-xs px-3 py-2 rounded border border-line hover:border-accent hover:text-accent transition dsiabled: opacity-60 cursor-pointer"
+                className="text-xs px-3 py-2 rounded border border-line hover:border-accent hover:text-accent transition disabled:opacity-60 cursor-pointer"
               >
                 {uploadingImage ? "Se încarcă..." : item.image_url ? "Schimbă coperta" : "Adaugă copertă"}
               </button>
-              <button
-                onClick={() => onDelete(item.id)}
-                className="text-xs px-3 py-2 rounded border border-line text-red-700 hover:text-white  hover:border-red-500 hover:bg-red-500 transition cursor-pointer"
-              >
-                Șterge
-              </button>
+
+              {item.image_url && (
+                <>
+                  <a
+                  href={item.image_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs px-3 py-2 rounded border border-line hover:border-accent hover:text-accent transition flex items-center"
+                  >
+                    Vezi
+                  </a>
+                  <button
+                    onClick={handleRemoveImage}
+                    className="text-xs px-3 py-2 rounded border border-line text-red-700 transition cursor-pointer"
+                  >
+                    Elimină
+                  </button>
+                </>
+              )}
             </div>
 
-            <div className="mt-2">
+            <div className=" flex gap-2 mt-2">
               <input
                 ref={pdfInputRef}
                 type="file"
@@ -104,14 +133,41 @@ export function PortofolioItemCard({
                 onChange={handlePdfChange}
                 className="hidden"  
               />
+
               <button
                 onClick={() => pdfInputRef.current?.click()}
                 disabled={uploadingPdf}
                 className="w-full text-xs px-3 py-2 rounded border border-line hover:border-accent hover:text-accent transition disabled:opacity-60 cursor-pointer"
               >
-                {uploadingPdf ? "Se încarcă..." : item.pdf_url ? "PDF încărcat — schimbă" : "Adaugă PDF"}  
-              </button>  
+                {uploadingPdf ? "Se încarcă..." : item.pdf_url ? "Schimbă PDF" : "Adaugă PDF"}  
+              </button>
+
+              {item.pdf_url && (
+                <>
+                  <a
+                    href={item.pdf_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs px-3 py-2 rounded border border-line hover:border-accent hover:text-accent transition flex items-center"
+                  >
+                    Vezi
+                  </a>
+                  <button
+                    onClick={handleRemovePdf}
+                    className="text-xs px-3 py-2 rounded border border-line text-red-700 hover:border-red-700 transition cursor-pointer"
+                  >
+                    Elimină
+                  </button>
+                </>
+              )}
             </div>
+
+            <button
+                onClick={() => onDelete(item.id)}
+                className="w-full text-xs px-3 py-2 mt-2 rounded border border-line text-red-700 hover:text-white  hover:border-red-500 hover:bg-red-500 transition cursor-pointer"
+              >
+                Șterge
+              </button>
           </div>  
         </div>
     )

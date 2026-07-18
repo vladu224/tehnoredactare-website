@@ -50,6 +50,35 @@ export async function uploadCoverImage(
     return `${data.publicUrl}?t=${Date.now()}`;
 }
 
+export async function removeCoverImage(
+    id: string,
+): Promise<PortofolioItem> {
+    const item = await supabaseAdmin
+        .from("portofolio_items")
+        .select("image_url")
+        .eq("id", id)
+        .single()
+
+    if (item.data?.image_url) {
+        const path = item.data.image_url.split("/portofolio_covers/")[1].split("?")[0];
+        if (path) {
+            await supabaseAdmin.storage
+                .from("portofolio_covers")
+                .remove([path]);
+        }
+    }
+
+    const { data, error } = await supabaseAdmin
+        .from("portofolio_items")
+        .update({ image_url: null })
+        .eq("id", id)
+        .select()
+        .single();
+
+    if (error) throw new Error(error.message);
+    return data;    
+}
+
 export async function updatePortofolioItemImage(
     id: string,
     imageUrl: string
@@ -109,3 +138,31 @@ export async function updatePortofolioItemPdf(
     return data;
 }
 
+export async function removePdf(
+    id: string
+): Promise<PortofolioItem> {
+    const item = await supabaseAdmin
+        .from("portofolio_items")
+        .select("pdf_url")
+        .eq("id", id)
+        .single();
+
+    if (item.data?.pdf_url) {
+        const path = item.data.pdf_url.split("/portofolio_pdfs/")[1]?.split("?")[0];
+        if (path) {
+            await supabaseAdmin.storage
+                .from("portofolio_pdfs")
+                .remove([path]);
+        }
+    }
+
+    const { data, error } = await supabaseAdmin
+        .from("portofolio_items")
+        .update({ pdf_url: null })
+        .eq("id", id)
+        .select()
+        .single();
+
+    if (error) throw new Error(error.message);
+    return data;
+}

@@ -1,5 +1,5 @@
 import { verifySessionToken } from "@/lib/auth/session";
-import { updatePortofolioItemPdf, uploadPdf } from "@/lib/business/portofolio/portofolioAdmin";
+import { removePdf, updatePortofolioItemPdf, uploadPdf } from "@/lib/business/portofolio/portofolioAdmin";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(
@@ -41,6 +41,33 @@ export async function POST(
     } catch {
         return NextResponse.json(
             { error: "Eroare la upload." },
+            { status: 500 }
+        );
+    }
+}
+
+export async function DELETE(
+    request: NextRequest,
+    { params }: { params: Promise<{ id: string }> } 
+) {
+    const token = request.cookies.get("admin_session")?.value;
+    const isAuthenticated = token ? verifySessionToken(token) : false;
+
+    if (!isAuthenticated) {
+        return NextResponse.json(
+            { error: "Neautorizat." },
+            { status: 401 }
+        );
+    }
+
+    const { id } = await params;
+
+    try {
+        const updated = await removePdf(id);
+        return NextResponse.json(updated);
+    } catch {
+        return NextResponse.json(
+            { error: "Eroare la ștergere pdf." },
             { status: 500 }
         );
     }
