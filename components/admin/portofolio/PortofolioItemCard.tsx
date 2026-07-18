@@ -11,23 +11,42 @@ export function PortofolioItemCard({
     onUploaded: () => void;
 }) {
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const [uploading, setUploading] = useState(false);
+    const pdfInputRef = useRef<HTMLInputElement>(null);
+    const [uploadingImage, setUploadingImage] = useState(false);
+    const [uploadingPdf, setUploadingPdf] = useState(false);
 
     async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        setUploading(true);
+        setUploadingImage(true);
         const formData = new FormData();
         formData.append("file", file);
 
-        const response = await fetch(`/api/admin/portofolio/${item.id}/upload`, {
+        const response = await fetch(`/api/admin/portofolio/${item.id}/upload-cover`, {
             method: "POST",
             body: formData,
         });
 
         if (response.ok) onUploaded();
-        setUploading(false);
+        setUploadingImage(false);
+    }
+
+    async function handlePdfChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setUploadingPdf(true);
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const response = await fetch(`/api/admin/portofolio/${item.id}/upload-pdf`, {
+            method: "POST",
+            body: formData,
+        });
+
+        if (response.ok) onUploaded();
+        setUploadingPdf(false);
     }
 
     return (
@@ -64,17 +83,34 @@ export function PortofolioItemCard({
               />
               <button
                 onClick={() => fileInputRef.current?.click()}
-                disabled={uploading}
+                disabled={uploadingImage}
                 className="flex-1 text-xs px-3 py-2 rounded border border-line hover:border-accent hover:text-accent transition dsiabled: opacity-60 cursor-pointer"
               >
-                {uploading ? "Se încarcă..." : item.image_url ? "Schimbă coperta" : "Adaugă copertă"}
+                {uploadingImage ? "Se încarcă..." : item.image_url ? "Schimbă coperta" : "Adaugă copertă"}
               </button>
               <button
                 onClick={() => onDelete(item.id)}
-                className="text-xs px-3 py-2 rounded border border-line text-red-700 hover:text-red-400 hover:border-red-400 transition cursor-pointer"
+                className="text-xs px-3 py-2 rounded border border-line text-red-700 hover:text-white  hover:border-red-500 hover:bg-red-500 transition cursor-pointer"
               >
                 Șterge
               </button>
+            </div>
+
+            <div className="mt-2">
+              <input
+                ref={pdfInputRef}
+                type="file"
+                accept="application/pdf"
+                onChange={handlePdfChange}
+                className="hidden"  
+              />
+              <button
+                onClick={() => pdfInputRef.current?.click()}
+                disabled={uploadingPdf}
+                className="w-full text-xs px-3 py-2 rounded border border-line hover:border-accent hover:text-accent transition disabled:opacity-60 cursor-pointer"
+              >
+                {uploadingPdf ? "Se încarcă..." : item.pdf_url ? "PDF încărcat — schimbă" : "Adaugă PDF"}  
+              </button>  
             </div>
           </div>  
         </div>

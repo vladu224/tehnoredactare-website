@@ -4,6 +4,7 @@ export interface PortofolioItem {
     category: string;
     year: number;
     image_url: string | null;
+    pdf_url: string | null;
     sort_order: number;
     created_at: string;
 }

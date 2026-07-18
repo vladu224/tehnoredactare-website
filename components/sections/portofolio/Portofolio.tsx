@@ -46,8 +46,8 @@ export function Portofolio() {
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-6 gap-10 sm:gap-12 mt-12 sm:mt-16">
-            {items.map((item, index) => (
-              <PortofolioCard key={item.id} item={item} index={index} />  
+            {items.map((item) => (
+              <PortofolioCard key={item.id} item={item} />  
             ))}
           </div>
         </section>
