@@ -28,8 +28,8 @@ export default function DashboardLayout({
     }
 
     return (
-        <div className="grid grid-cols-[220px_1fr] min-h-screen">
-          <aside className="bg-card border-r border-line py-6 flex flex-col">
+        <div className="grid grid-cols-[220px_1fr] h-screen overflow-hidden">
+          <aside className="bg-bg2 border-r border-line py-6 flex flex-col h-screen overflow-y-auto">
             <div className="px-5 mb-8">
               <p className="font-display text-lg text-ink">
                 Atelier Tipar
