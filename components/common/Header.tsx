@@ -25,8 +25,8 @@ export function Header() {
 
     return (
       <header className="sticky top-0 z-50 w-full bg-white/40 backdrop-blur-sm border-b border-ink/25">
-        <div className="max-w-full mx-auto px-8 lg:px-18 flex items-center justify-between">
-          <div className="flex items-baseline text-lg lg:text:xl">
+        <div className="max-w-full mx-auto md:px-17 lg:px-18 flex items-center justify-between">
+          <div>
             <a
               href="#"
               onClick={(e) => { handleScroll(e, "top"); closeMenu(); }}
@@ -34,7 +34,7 @@ export function Header() {
               <img
                 src="/logo.png"
                 alt="Logo Book Studio"
-                className="w-44 h-auto"
+                className="w-40 sm:w-44 h-auto"
               />
             </a>
           </div>
@@ -63,7 +63,7 @@ export function Header() {
 
             <button
               onClick={() => setMenuOpen((open) => !open)}
-              className="lg:hidden pt-1 text-ink cursor-pointer"
+              className="lg:hidden pr-4 sm:pr-0 pt-1 text-ink cursor-pointer"
               aria-label={isMenuOpen ? "Închide meniul" : "Deschide meniul"}
               aria-expanded={isMenuOpen}
             >
@@ -87,7 +87,7 @@ export function Header() {
                   handleScroll(e, l.href);
                   closeMenu();
                 }}
-                className="font-display text-ink text-lg py-3.5 border-b border-ink/10 last:border-b-0 hover:text-accent transition flex items-center min-h-[44px]"
+                className="font-display text-ink text-md py-3.5 border-b border-ink/10 last:border-b-0 hover:text-accent transition flex items-center min-h-[44px]"
               >
                 {l.label}
               </Link>
