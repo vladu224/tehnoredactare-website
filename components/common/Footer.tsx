@@ -8,7 +8,7 @@ export function Footer() {
           {/* Brand */}
           <div>
             <span className="font-display text-2xl text-paper">
-              Atelier Tipar
+              Book Studio
             </span>
             <p className="text-paper/60 text-sm mt-4 max-w-sm leading-relaxed">
               Atelier editorial independent dedicat autorilor și editurilor
@@ -45,7 +45,7 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-paper/10 mt-12 pt-6 flex flex-col sm:flex-row items-center sm:justify-between gap-2 text-xs sm:text-sm text-paper/50">
-          <span>&copy; {new Date().getFullYear()} Atelier Tipar. Toate drepturile rezervate.</span>
+          <span>&copy; {new Date().getFullYear()} Book Studio. Toate drepturile rezervate.</span>
           <div className="flex flex-center justify-center items-center gap-2">
             <span>Designed &amp; crafted by</span>
             <img 

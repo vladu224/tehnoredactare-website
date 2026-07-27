@@ -32,7 +32,7 @@ export default function DashboardLayout({
           <aside className="bg-card border-r border-line py-6 flex flex-col h-screen overflow-y-auto">
             <div className="px-5 mb-8">
               <p className="font-display text-lg text-ink">
-                Atelier Tipar
+                Book Studio
               </p>
               <p className="text-ink-soft text-xs tracking-widest uppercase mt-0.5">
                 Panou Admin

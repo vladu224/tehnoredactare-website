@@ -41,7 +41,7 @@ export default function AdminLoginPage() {
               Acces admin
             </h1>
             <p className="text-ink-soft text-sm text-center mt-1">
-                Atelier Tipar
+                Book Studio
             </p>
 
             <div className="mt-6 space-y-4">

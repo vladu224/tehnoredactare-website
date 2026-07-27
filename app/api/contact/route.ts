@@ -18,7 +18,7 @@ export async function POST(request: Request) {
         }
 
         await resend.emails.send({
-            from: "Atelier Tipar <onboarding@resend.dev>",
+            from: "Book Studio <onboarding@resend.dev>",
             to: CONTACT_EMAIL!,
             replyTo: email,
             subject: `Cerere oferta noua - ${name}`,

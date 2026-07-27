@@ -25,14 +25,18 @@ export function Header() {
 
     return (
       <header className="sticky top-0 z-50 w-full bg-white/40 backdrop-blur-sm border-b border-ink/25">
-        <div className="max-w-full mx-auto px-8 lg:px-24 py-5 flex items-center justify-between">
+        <div className="max-w-full mx-auto px-8 lg:px-18 flex items-center justify-between">
           <div className="flex items-baseline text-lg lg:text:xl">
             <a
               href="#"
-              onClick={(e) => {handleScroll(e, "top");closeMenu();}}
+              onClick={(e) => { handleScroll(e, "top"); closeMenu(); }}
             >
-              Atelier Tipar  
-            </a> 
+              <img
+                src="/logo.png"
+                alt="Logo Book Studio"
+                className="w-44 h-auto"
+              />
+            </a>
           </div>
 
           <nav className="hidden lg:flex items-center gap-10">
@@ -41,7 +45,7 @@ export function Header() {
                 key={l.href}
                 href="#"
                 onClick={(e) => handleScroll(e, l.href)}
-                className="text-sm text-ink hover:text-accent hover:border-b transition"
+                className="font-display text-md text-ink hover:text-accent hover:border-b transition"
               >
                 {l.label}
               </Link>
@@ -83,7 +87,7 @@ export function Header() {
                   handleScroll(e, l.href);
                   closeMenu();
                 }}
-                className="text-ink text-base py-3.5 border-b border-ink/10 last:border-b-0 hover:text-accent transition flex items-center min-h-[44px]"
+                className="font-display text-ink text-lg py-3.5 border-b border-ink/10 last:border-b-0 hover:text-accent transition flex items-center min-h-[44px]"
               >
                 {l.label}
               </Link>

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: "/",
             disallow: ["/admin", "/api"],
         },
-        sitemap: "https://ateliertipar.ro/sitemap.xml"
+        sitemap: "https://bookstudio.ro/sitemap.xml"
     }
 }

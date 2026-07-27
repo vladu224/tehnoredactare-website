@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Fraunces, Inter, Tinos } from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -14,17 +14,17 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Atelier Tipar - Tehnoredactare și design de carte",
+  title: "Book Studio - Tehnoredactare și design de carte",
   description: "Servicii profesionale de corectură, stilistică și tehnoredactare pentru autori și edituri. Află prețul instant cu calculatorul nostru online.",
-  keywords: ["corectura carte", "tehnoredactare", "editare text", "servicii editoriale", "calculator preturi carti"],
+  keywords: ["book studio", "corectura carte", "tehnoredactare", "editare text", "servicii editoriale", "calculator preturi carti"],
   authors: [{ name: "VA" }],
   creator: "VA",
-  metadataBase: new URL("https://ateliertipar.ro"),
+  metadataBase: new URL("https://bookstudio.vercel.app"),
   openGraph: {
-    title: "Atelier Tipar - Tehnoredactare și design de carte",
+    title: "Book Studio - Tehnoredactare și design de carte",
     description: "Estimează costul tehnoredactării unei cărți în timp",
     /*url: */
-    siteName: "Atelier Tipar",
+    siteName: "Book Studio",
     locale: "ro_RO",
     type: "website",
     images: [
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Atelier Tipar - Tehnoredactare și design de carte",
+        alt: "Book Studio - Tehnoredactare și design de carte",
       },
     ],
   } 
