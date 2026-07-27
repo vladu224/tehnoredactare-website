@@ -71,7 +71,7 @@ export default function DashboardLayout({
             </div>
           </aside>
 
-          <main className="px-6 sm:px-12 py-10 bg-paper">
+          <main className="px-6 sm:px-12 py-10 bg-paper h-screen overflow-y-auto">
             {children}
           </main>
         </div>
