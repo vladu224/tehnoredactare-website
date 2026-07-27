@@ -21,7 +21,7 @@ export async function POST(request: Request) {
             from: "Book Studio <onboarding@resend.dev>",
             to: CONTACT_EMAIL!,
             replyTo: email,
-            subject: `Cerere oferta noua - ${name}`,
+            subject: `Cerere ofertă nouă - ${name}`,
             text: [
                 `Nume: ${name}`,
                 `Email: ${email}`,
