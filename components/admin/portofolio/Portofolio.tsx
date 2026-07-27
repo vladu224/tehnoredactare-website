@@ -54,10 +54,6 @@ export function Portofolio() {
 
     return (
         <div>
-          <h2 className="font-display text-lg text-ink mb-3">
-            Lucrări recente (portofoliu)  
-          </h2>
-
           <form
             onSubmit={handleCreate}
             className="border border-line rounded-2xl bg-card p-4 mb-4 grid grid-cols-1 sm:grid-cols-[2fr_1.5fr_1fr_auto] gap-2"
