@@ -104,7 +104,7 @@ export default function DashboardLayout({
           )}
 
           {/* SIDEBAR */}
-          <aside className="hidden sm:flex bg-card border-r border-line py-6 flex-col h-screen sticky top-0 transition-all duration-300 relative select-none">
+          <aside className="hidden sm:flex bg-card border-r border-line flex-col pt-6 h-screen sticky top-0 transition-all duration-300 relative select-none">
                 
             <div className={`flex items-center mb-8 h-10 ${
               isSidebarCollapsed
@@ -154,7 +154,7 @@ export default function DashboardLayout({
                         ? item.label 
                         : undefined
                     }
-                    className={`flex items-center gap-3 py-2.5 text-sm transition-all ${
+                    className={`flex items-center gap-3 py-2.5 text-sm hover:bg-ink/5 transition-all ${
                       isSidebarCollapsed
                         ? "justify-center px-0"
                         : "px-5"
@@ -176,13 +176,7 @@ export default function DashboardLayout({
               })}
             </nav>
 
-            <div className={`pt-4 border-t border-line shrink-0 ${
-              isSidebarCollapsed
-                ? "flex justify-center px-0"
-                : "px-5"
-              }`
-            }
-            >
+            
               <button
                 onClick={handleLogout}
                 title={
@@ -190,7 +184,7 @@ export default function DashboardLayout({
                     ? "Ieși din cont"
                     : undefined
                 }
-                className={`flex items-center gap-2 text-sm text-ink-soft hover:text-accent transition cursor-pointer ${
+                className={`flex items-center justify-center border-t border-ink gap-2 p-6 text-sm text-ink-soft hover:bg-ink/5 hover:text-accent transition cursor-pointer ${
                   isSidebarCollapsed
                     ? "justify-center"
                     : ""
@@ -204,7 +198,7 @@ export default function DashboardLayout({
                   </span>
                 )}
               </button>
-            </div>
+            
           </aside>
 
           <main className="px-6 sm:px-12 py-10 h-full overflow-y-auto">
