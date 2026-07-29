@@ -47,7 +47,7 @@ export function Cookie() {
                 Respectăm confidențialitatea ta
               </h3>
               <p className="text-paper/60 text-sm mt-1.5 leading-relaxed">
-                Folosim cookie-uri esențiale pentru funcționarea site-ului. Cu acordul tău, am dori și să folosim cookie-uri de analiză, ca să înțelegem cum e folosit site-ul.
+                Utilizăm cookie-uri necesare pentru funcționarea și securitatea platformei. De asemenea, am dori să folosim cookie-uri de analiză pentru a ne ajuta să îmbunătățim experiența ta pe site.
               </p>
 
               {showDetails && (
@@ -99,13 +99,13 @@ export function Cookie() {
                       onClick={acceptAll}
                       className="flex-1 bg-accent hover:bg-accent-hover text-white text-sm font-medium px-4 py-2.5 rounded-lg transition cursor-pointer"
                     >
-                      Acceptă tot
+                      Acceptă
                     </button>
                     <button
                       onClick={acceptEssentialOnly}
                       className="flex-1 border border-paper/20 text-paper text-sm font-medium px-4 py-2.5 rounded-lg hover:bg-paper/5 transition cursor-pointer"
                     >
-                      Doar esențiale
+                      Respinge
                     </button>
                     <button
                       onClick={() => setShowDetails(true)}
