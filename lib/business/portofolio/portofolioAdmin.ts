@@ -166,3 +166,18 @@ export async function removePdf(
     if (error) throw new Error(error.message);
     return data;
 }
+
+export async function updatePortofolioItemDetails(
+    id: string,
+    updates: { title: string, category: string, year: number }
+): Promise<PortofolioItem> {
+    const { data, error } = await supabaseAdmin
+        .from("portofolio_items")
+        .update(updates)
+        .eq("id", id)
+        .select()
+        .single()
+
+    if (error) throw new Error(error.message);
+    return data;
+}

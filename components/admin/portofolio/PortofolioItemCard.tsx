@@ -1,4 +1,8 @@
+"use client";
+
 import { PortofolioItem } from "@/lib/types/portofolio/portofolio";
+import { Check, Loader2 } from "lucide-react";
+import { title } from "process";
 import { useRef, useState } from "react";
 
 export function PortofolioItemCard({
@@ -14,6 +18,13 @@ export function PortofolioItemCard({
     const pdfInputRef = useRef<HTMLInputElement>(null);
     const [uploadingImage, setUploadingImage] = useState(false);
     const [uploadingPdf, setUploadingPdf] = useState(false);
+
+    const [title, setTitle] = useState(item.title);
+    const [category, setCategory] = useState(item.category);
+    const [year, setYear] = useState(String(item.year));
+    const [savingDetails, setSavingDetails] = useState<"idle" | "saving" | "saved">("idle");
+
+    const isDirty = title !== item.title || category !== item.category || year !== String(item.year);
 
     async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0];
@@ -65,6 +76,23 @@ export function PortofolioItemCard({
         onUploaded();
     }
 
+    async function handleSaveDetails() {
+        setSavingDetails("saving");
+        const response = await fetch(`/api/admin/portofolio/${item.id}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ title, category, year: Number(year) })
+        });
+
+        if (response.ok) {
+            setSavingDetails("saved");
+            onUploaded();
+            setTimeout(() => setSavingDetails("idle"), 1500);
+        } else {
+            setSavingDetails("idle");
+        }
+    }
+
     return (
         <div className="border border-line rounded-2xl overflow-hidden bg-card">
           <div className="aspect-[3/4] bg-paper relative">
@@ -81,14 +109,43 @@ export function PortofolioItemCard({
             )}
           </div>
 
-          <div className="p-3">
-            <p className="text-sm font-medium text-ink truncate">
-              {item.title}
-            </p>
-            <p className="text-xs text-ink-soft mt-0.5">
-              {item.category} · {item.year}
-            </p>
+          <div className="p-3 space-y-2">
+            <input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full text-sm font-medium border border-line rounded px-2 py-1.5 bg-paper focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition"  
+            />
+            <div className="grid grid-cols-2 gap-2">
+              <input
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                placeholder="Categorie"
+                className="text-xs border border-line rounded px-2 py-1.5 bg-paper focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition"
+              />
+              <input
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+                placeholder="An"
+                className="text-xs border border-line rounded px-2 py-1.5 bg-paper focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition"
+              />
+            </div>
 
+            <button
+              onClick={handleSaveDetails}
+              disabled={!isDirty || savingDetails === "saving"}
+              className={`w-full text-xs px-3 py-2 rounded bg-accent hover:bg-accent-hover text-white disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center justify-center gap-1.5 cursor-pointer ${
+                savingDetails === "saved"
+                  ? "bg-green-500"
+                  : ""
+              }`}
+            >
+              {savingDetails === "saving" && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+              {savingDetails === "saved" && <Check className="w-3.5 h-3.5" />}
+              {savingDetails === "saved" ? "Salvat" : savingDetails === "saving" ? "Se salvează" : "Salvează detalii"}
+            </button>
+          </div>  
+          
+          <div className="p-3">
             <div className="flex gap-2 mt-3">
               <input
                 ref={fileInputRef}
@@ -137,7 +194,9 @@ export function PortofolioItemCard({
               <button
                 onClick={() => pdfInputRef.current?.click()}
                 disabled={uploadingPdf}
-                className="w-full text-xs px-3 py-2 rounded border border-line hover:border-accent hover:text-accent transition disabled:opacity-60 cursor-pointer"
+                className={`w-full text-xs px-3 rounded border border-line hover:border-accent hover:text-accent transition disabled:opacity-60 cursor-pointer ${
+                  item.pdf_url ? "py-2" : "py-4"
+                }`}
               >
                 {uploadingPdf ? "Se încarcă..." : item.pdf_url ? "Schimbă PDF" : "Adaugă PDF"}  
               </button>
