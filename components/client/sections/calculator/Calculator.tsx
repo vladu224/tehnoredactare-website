@@ -19,7 +19,7 @@ export function Calculator({ onRequestOffer }: CalculatorProps) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("/api/admin/prices")
+        fetch("/api/prices?category=service")
             .then((res) => {
                 if(!res.ok) throw new Error("Eroare la incarcarea preturilor in sectiunea Calculator");
                 return res.json();

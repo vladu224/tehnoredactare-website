@@ -9,8 +9,7 @@ export function PriceList() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-      const origin = window.location.origin;
-        fetch(`${origin}/api/admin/prices`)
+        fetch("/api/prices?category=pricelist")
             .then((res) => {
                 if(!res.ok) throw new Error("Eroare la încărcarea prețurilor");
                 return res.json();
