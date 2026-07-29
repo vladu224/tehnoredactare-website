@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 const navItems = [
-    { href: "/admin", label: "Tarife", icon: Tag },
+    { href: "/admin/prices", label: "Tarife", icon: Tag },
     { href: "/admin/plans", label: "Pachete", icon: Package },
     { href: "/admin/calculator", label: "Calculator", icon: Calculator },
     { href: "/admin/portofolio", label: "Portofoliu", icon: BookOpen },
@@ -23,7 +23,7 @@ export default function DashboardLayout({
     const [isSidebarCollapsed, setSidebarCollapsed] = useState(false);
 
     async function handleLogout() {
-        await fetch("api/admin/logout", {
+        await fetch("/api/admin/logout", {
             method: "POST"
         });
         router.push("/admin/login");
@@ -177,27 +177,27 @@ export default function DashboardLayout({
             </nav>
 
             
-              <button
-                onClick={handleLogout}
-                title={
-                  isSidebarCollapsed
-                    ? "Ieși din cont"
-                    : undefined
-                }
-                className={`flex items-center justify-center border-t border-ink gap-2 p-6 text-sm text-ink-soft hover:bg-ink/5 hover:text-accent transition cursor-pointer ${
-                  isSidebarCollapsed
-                    ? "justify-center"
-                    : ""
-                  }`
-                }
-              >
-                <LogOut className="w-4 h-4 shrink-0" />
-                {!isSidebarCollapsed && (
-                  <span className="whitespace-nowrap transition-opacity duration-200">
-                    Ieși din cont
-                  </span>
-                )}
-              </button>
+            <button
+              onClick={handleLogout}
+              title={
+                isSidebarCollapsed
+                  ? "Ieși din cont"
+                  : undefined
+              }
+              className={`flex items-center justify-center border-t border-ink gap-2 p-6 text-sm text-ink-soft hover:bg-ink/5 hover:text-accent transition cursor-pointer ${
+                isSidebarCollapsed
+                  ? "justify-center"
+                  : ""
+                }`
+              }
+            >
+              <LogOut className="w-4 h-4 shrink-0" />
+              {!isSidebarCollapsed && (
+                <span className="whitespace-nowrap transition-opacity duration-200">
+                  Ieși din cont
+                </span>
+              )}
+            </button>
             
           </aside>
 
