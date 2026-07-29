@@ -1,5 +1,6 @@
 import { rateLimitOk } from "@/lib/auth/rateLimit";
 import { createSessionToken } from "@/lib/auth/session";
+import { verifyTotpCode } from "@/lib/auth/totp";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -12,7 +13,7 @@ export async function POST(request: Request) {
         );
     }
 
-    const { email, password } = await request.json()
+    const { email, password, totpCode } = await request.json()
 
     const isValid =
         email === process.env.ADMIN_EMAIL &&
@@ -21,6 +22,13 @@ export async function POST(request: Request) {
     if (!isValid) {
         return NextResponse.json(
             { error: "Email sau parolă incorectă." },
+            { status: 401 }
+        );
+    }
+
+    if (!totpCode || !verifyTotpCode(totpCode)) {
+        return NextResponse.json(
+            { error: "Cod de autentificare incorect." },
             { status: 401 }
         );
     }

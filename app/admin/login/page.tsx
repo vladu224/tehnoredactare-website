@@ -7,6 +7,7 @@ export default function AdminLoginPage() {
     const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [totpCode, setTotpCode] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     
@@ -18,7 +19,7 @@ export default function AdminLoginPage() {
         const response = await fetch("/api/admin/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, password, totpCode })
         });
 
         if (response.ok) {
@@ -41,7 +42,7 @@ export default function AdminLoginPage() {
               Acces admin
             </h1>
             <p className="text-ink-soft text-sm text-center mt-1">
-                Book Studio
+              Book Studio
             </p>
 
             <div className="mt-6 space-y-4">
@@ -69,6 +70,21 @@ export default function AdminLoginPage() {
                   className="w-full rounded-md border border-line bg-paper px-4 py-2.5 text-ink focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition"
                 />
               </div>  
+              <div>
+                <label className="block text-sm font-medium text-ink mb-2">
+                  Cod autentificare (2FA)
+                </label>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={6}
+                  required
+                  value={totpCode}
+                  onChange={(e) => setTotpCode(e.target.value)}
+                  placeholder="000000"
+                  className="w-full rounded-md border border-line bg-paper px-4 py-2.5 text-ink focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent transition"
+                />  
+              </div>
 
               {error && 
                 <p className="text-red-700 text-sm">{error}</p>
