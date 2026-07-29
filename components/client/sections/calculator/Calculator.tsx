@@ -19,8 +19,7 @@ export function Calculator({ onRequestOffer }: CalculatorProps) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const origin = window.location.origin;
-        fetch(`${origin}/api/admin/prices`)
+        fetch("/api/admin/prices")
             .then((res) => {
                 if(!res.ok) throw new Error("Eroare la incarcarea preturilor in sectiunea Calculator");
                 return res.json();
@@ -66,6 +65,7 @@ export function Calculator({ onRequestOffer }: CalculatorProps) {
                 onChange={setPageCount}
               />  
               <ServiceCheckbox
+                serviceOptions={subitemPrices}
                 selectedIds={state.selectedServiceIds} 
                 subOptionValues={state.subOptionValues}
                 onToggle={toggleService}

@@ -1,7 +1,8 @@
-import { serviceOptions } from "@/lib/data/calculator/services-options";
 import { SubOptionSlider } from "./SubOptionSlider";
+import { ServiceOptionFinal } from "@/lib/types/calculator/calculator";
 
 interface ServiceCheckboxProps {
+    serviceOptions: ServiceOptionFinal[];
     selectedIds: string[];
     subOptionValues: Record<string, number>;
     onToggle: (id: string) => void;
@@ -9,6 +10,7 @@ interface ServiceCheckboxProps {
 }
 
 export function ServiceCheckbox({ 
+    serviceOptions,
     selectedIds,
     subOptionValues,
     onToggle,
