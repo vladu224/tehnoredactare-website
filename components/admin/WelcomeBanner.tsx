@@ -12,8 +12,8 @@ export function WelcomeBanner() {
   }, []);
 
   return (
-    <div className="w-full pt-100 justify-center text-center">
-      <h1 className="font-display text-4xl sm:text-7xl text-ink text-center">
+    <div className="w-full pt-50 sm:pt-100 justify-center text-center">
+      <h1 className="font-display text-3xl sm:text-7xl text-ink text-center">
         {TEXT.split("").map((char, index) => (
           <span
             key={index}

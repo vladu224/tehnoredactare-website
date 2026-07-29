@@ -63,7 +63,7 @@ export function Header() {
 
             <button
               onClick={() => setMenuOpen((open) => !open)}
-              className="lg:hidden pr-4 sm:pr-0 pt-1 text-ink cursor-pointer"
+              className="lg:hidden pr-8 sm:pr-0 pt-1 text-ink cursor-pointer"
               aria-label={isMenuOpen ? "Închide meniul" : "Deschide meniul"}
               aria-expanded={isMenuOpen}
             >

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/logo.png",
+        url: "/logo2.png",
         width: 1200,
         height: 630,
         alt: "Book Studio - Tehnoredactare și design de carte",
