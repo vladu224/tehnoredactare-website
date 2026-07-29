@@ -44,14 +44,14 @@ export default function DashboardLayout({
         >
           {/* TOPBAR */}
           <header className="sm:hidden sticky top-0 z-50 w-full bg-card border-b border-line px-5 py-4 flex items-center justify-between">
-            <div>
+            <Link href="/admin">
               <p className="font-display text-lg text-ink font-semibold">
                 Book Studio
               </p>
               <p className="text-ink-soft text-[10px] tracking-widest uppercase">
                 Panou admin
               </p>
-            </div>
+            </Link>
 
             <button
               onClick={() => setMenuOpen((open) => !open)}
@@ -113,14 +113,17 @@ export default function DashboardLayout({
               }
             >
               {!isSidebarCollapsed && (
-                <div className="whitespace-nowrap overflow-hidden transition-opacity duration-200">
+                <Link
+                  href="/admin"
+                  className="whitespace-nowrap overflow-hidden transition-opacity duration-200"
+                >
                   <p className="font-display text-lg text-ink font-semibold">
                     Book Studio
                   </p>
                   <p className="text-ink-soft text-xs tracking-widest uppercase">
                     Panou admin
                   </p>
-                </div>
+                </Link>
               )}
 
               <button
