@@ -4,7 +4,6 @@ import { Hero } from "@/components/client/sections/hero/Hero";
 
 import { Contact } from "@/components/client/sections/contact/Contact";
 import { Pricing } from "@/components/client/sections/pricing/Pricing";
-import { PriceList } from "@/components/client/sections/pricing/PriceList";
 import { Services } from "@/components/client/sections/services/Services";
 import { Calculator } from "@/components/client/sections/calculator/Calculator";
 import { Process } from "@/components/client/sections/process/Process";

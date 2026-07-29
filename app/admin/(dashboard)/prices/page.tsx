@@ -1,6 +1,6 @@
 "use client";
 
-import { PriceRow } from "@/components/admin/PriceRow";
+import { PriceRow } from "@/components/admin/pricing/PriceRow";
 import { PriceItem } from "@/lib/types/prices/prices";
 import { useEffect, useState } from "react";
 
