@@ -1,6 +1,6 @@
 "use client";
 
-import { WelcomeBanner } from "@/components/admin/WelcomeBanner";
+import { WelcomeBanner } from "@/components/admin/pages/home/WelcomeBanner";
 
 export default function HomeAdmin() {
     return (
