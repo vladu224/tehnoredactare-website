@@ -1,6 +1,6 @@
 import { PriceItem } from "@/lib/types/prices/prices";
 import { useEffect, useState } from "react";
-import { PriceRow } from "../../pricing/PriceRow";
+import { PriceRow } from "../../ui/PriceRow";
 
 export default function Prices() {
     const [prices, setPrices] = useState<PriceItem[]>([]);
