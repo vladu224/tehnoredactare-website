@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 
     if (!rateLimitOk(ip)) {
         return NextResponse.json(
-            { error: "Prea multe încercări. Încearcă din nou în 15 minute." },
+            { error: "Prea multe încercări. Încearcă din nou în 5 minute." },
             { status: 429 }
         );
     }
