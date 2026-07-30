@@ -36,6 +36,7 @@ export default function AdminLoginPage() {
         <div className="min-h-screen bg-paper flex items-center justify-center px-6">
           <form
             onSubmit={handleSubmit}
+            noValidate
             className="bg-card border border-line rounded-2xl p-8 w-full max-w-sm"
           >
             <h1 className="font-display text-2xl text-ink text-center">
