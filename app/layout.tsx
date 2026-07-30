@@ -51,7 +51,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col sm:scroll-smooth">
         {children}
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLI_GA_ID || ""} />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
       </body>
     </html>
   );
