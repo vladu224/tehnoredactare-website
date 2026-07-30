@@ -30,7 +30,7 @@ export default function Calculator() {
             Tarife folosite în calculatorul de estimare de pe site.  
           </p>
 
-          <div>
+          <div className="border border-line rounded-2xl bg-card">
             <div className="grid grid-cols-3 sm:grid-cols-[2fr_1fr_1fr_1fr_auto] gap-3 sm:gap-4 px-6 py-3.5 bg-ink/[0.02] border-b border-line text-xs font-semibold tracking-wider text-ink-soft uppercase">
               <span>Pachet</span>
               <span>Preț Min</span>
@@ -45,8 +45,6 @@ export default function Calculator() {
               ))}  
             </div>
           </div>  
-          
         </div>
-        
     )
 }
