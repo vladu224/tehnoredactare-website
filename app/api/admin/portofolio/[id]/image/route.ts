@@ -2,6 +2,13 @@ import { verifySessionToken } from "@/lib/auth/session";
 import { removeCoverImage, updatePortofolioItemImage, uploadCoverImage } from "@/lib/business/portofolio/portofolioAdmin";
 import { NextRequest, NextResponse } from "next/server";
 
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+const ALLOWED_IMAGE_TYPES = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+];
+
 export async function POST(
     request: NextRequest,
     { params }: { params: Promise<{ id: string }>}
@@ -23,6 +30,20 @@ export async function POST(
     if (!file) {
         return NextResponse.json(
             { error: "Niciun fișier trimis." },
+            { status: 400 }
+        );
+    }
+
+    if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+        return NextResponse.json(
+            { error: "Format neacceptat. Foloseste JPG, PNG sau WEBP." },
+            { status: 400 }
+        );
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+        return NextResponse.json(
+            { error: "Fisierul e prea mare (max 5MB)." },
             { status: 400 }
         );
     }

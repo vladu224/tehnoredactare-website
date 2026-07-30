@@ -2,6 +2,8 @@ import { verifySessionToken } from "@/lib/auth/session";
 import { removePdf, updatePortofolioItemPdf, uploadPdf } from "@/lib/business/portofolio/portofolioAdmin";
 import { NextRequest, NextResponse } from "next/server";
 
+const MAX_PDF_SIZE = 10 * 1024 * 1024;
+
 export async function POST(
     request: NextRequest,
     { params }: { params: Promise<{ id: string }>}
@@ -30,6 +32,13 @@ export async function POST(
     if (file.type !== "application/pdf") {
         return NextResponse.json(
             { error: "Fișierul trebuie să fie PDF." },
+            { status: 400 }
+        );
+    }
+
+    if (file.size > MAX_PDF_SIZE) {
+        return NextResponse.json(
+            { error: "Fisierul incarcat e prea mare (max 10MB)." },
             { status: 400 }
         );
     }
