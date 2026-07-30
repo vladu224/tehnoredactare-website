@@ -1,4 +1,4 @@
-import { Portofolio } from "@/components/admin/portofolio/Portofolio";
+import { Portofolio } from "@/components/admin/pages/portofolio/Portofolio";
 
 export default function PortofolioAdmin() {
     return (
