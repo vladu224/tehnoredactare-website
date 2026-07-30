@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter, Tinos } from "next/font/google";
 import "./globals.css";
-import { GoogleAnalytics } from "@next/third-parties/google";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -51,7 +50,6 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col sm:scroll-smooth">
         {children}
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
       </body>
     </html>
   );
